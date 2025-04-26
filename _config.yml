@@ -45,3 +45,6 @@ nav:
   
   - title: HTB 
     url: /HTB
+
+# Google Analytics example
+#ga_analytics: UA-000000-0
