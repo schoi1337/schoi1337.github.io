@@ -1,10 +1,7 @@
 ---
 layout: page
 title: About
-permalink: /about/
 ---
-
-# About
 
 This blog is my personal workspace — a place where I document what I learn, break, fix, and discover.  
 You’ll find writeups for HackTheBox machines, vulnerability analysis, proofs of concept, and everything in between.
@@ -22,3 +19,6 @@ Good work takes time, and I'm here for it.
 If you're curious about my notes, want to discuss ideas, or just want to say hi, feel free to reach out.
 
 Thanks for stopping by.
+
+[Github](https://github.com/schoi1337)
+[Hack the Box]()
