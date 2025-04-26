@@ -1,50 +1,33 @@
-# Setup
-title: schoi1337
-url: https://schoi1337.github.io
-paginate: 1
-baseurl: ""
-permalink: pretty
+title: "schoi1337"  
+description: "Exploring cybersecurity and ethical hacking through hands-on practice, research, and quiet persistence."
+baseurl: "" 
+url: "https://schoi1337.github.io" 
 
-# Gems
+markdown: kramdown
+theme: null
 plugins:
-  - jekyll-gist
-  - jekyll-paginate
+  - jekyll-feed
   - jekyll-seo-tag
 
-# Optimize Jekyll
 exclude:
-  - .editorconfig
-  - .git
-  - .jekyll-cache
   - Gemfile
   - Gemfile.lock
-  - LICENSE.md
+  - node_modules
+  - vendor
   - README.md
 
-sass:
-  sass_dir: _sass
-  style: :compressed
+# Build settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: page
 
-# Options
-
-# Replace this value and uncomment to enable Google Analytics tracking
-# ga_analytics: UA-000000-0
-
-# Specify the author for blog posts
-author:
-  name: schoi1337
-  email: schoi13337@gmail.com
-
-# Navbar page list
-nav:
-  - title: Blog
-    url: /archive
-
-  - title: About
-    url: /about
-  
-  - title: HTB 
-    url: /HTB
-
-# Google Analytics example
-#ga_analytics: UA-000000-0
+# Site Settings
+timezone: Australia/Melbourne

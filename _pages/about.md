@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+permalink: /about/
 ---
 
 This blog is my personal workspace — a place where I document what I learn, break, fix, and discover.  

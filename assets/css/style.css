@@ -1,0 +1,108 @@
+/* Base reset */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #1d1f21;
+    color: #c5c8c6;
+    line-height: 1.6;
+  }
+  
+  /* Links */
+  a {
+    color: #81a2be;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Header */
+  .site-header {
+    padding: 20px 0;
+    background-color: #1d1f21;
+  }
+  
+  .site-title {
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+  
+  /* Navigation */
+  .site-nav {
+    margin-top: 10px;
+  }
+  
+  .site-nav a {
+    margin-right: 15px;
+    font-weight: 500;
+  }
+  
+  /* Content */
+  .content {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  /* Posts */
+  .post {
+    margin-bottom: 60px;
+  }
+  
+  .post-title {
+    margin: 0;
+    font-size: 1.6em;
+  }
+  
+  .post-meta {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+  }
+  
+  /* Post Content */
+  .post-content {
+    margin-top: 20px;
+  }
+  
+  /* Footer */
+  .site-footer {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+  }
+  
+  /* Code Blocks */
+  pre, code {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #2d2d2d;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  pre {
+    padding: 15px;
+  }
+  
+  /* Excerpt for category list */
+  .post-excerpt {
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 0.95em;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .site-nav a {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .content {
+      padding: 0 15px;
+    }
+  }
+  
