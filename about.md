@@ -1,29 +1,24 @@
 ---
 layout: page
 title: About
+permalink: /about/
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+# About
 
-In the novel, *The Strange Case of Dr. Jekyll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+This blog is my personal workspace — a place where I document what I learn, break, fix, and discover.  
+You’ll find writeups for HackTheBox machines, vulnerability analysis, proofs of concept, and everything in between.
 
-There are currently two themes built on Poole:
+My main focus right now is growing as a penetration tester, sharpening my practical skills, and building a career with real-world expertise — not just certificates.
 
-- [Hyde](https://hyde.getpoole.com)
-- [Lanyon](https://lanyon.getpoole.com)
+I'm not in a rush.  
+Good work takes time, and I'm here for it.
 
-Learn more and contribute on [GitHub](https://github.com/poole).
+**Things I believe in:**
+- **Hands-on experience > Theory**
+- **Consistency > Intensity**
+- **Progress > Perfection**
 
-## Setup
+If you're curious about my notes, want to discuss ideas, or just want to say hi, feel free to reach out.
 
-Some fun facts about the setup of this project include:
-
-- Built for [Jekyll](https://jekyllrb.com)
-- Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-- Coded with [Atom](https://atom.io), an amazing open source code editor
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+Thanks for stopping by.
