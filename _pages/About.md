@@ -2,7 +2,7 @@
 layout: page
 title: About
 category : About
-permalink: /about/
+permalink: /About/
 ---
 
 This blog is my personal workspace — a place where I document what I learn, break, fix, and discover.  
