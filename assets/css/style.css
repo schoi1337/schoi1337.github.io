@@ -154,26 +154,12 @@ pre {
   position: relative;
 }
 
-/* Copy Button */
-.copy-button {
-  position: absolute;
-  top: 0.75em;
-  right: 0.75em;
-  background-color: #1E1E2E;
-  color: #E0DEF4;
-  border: 1px solid #302D41;
-  border-radius: 5px;
-  padding: 0.25em 0.6em;
-  font-size: 0.75em;
+/* Code block font setting */
+code[class*="language-"],
+pre[class*="language-"] {
   font-family: 'JetBrains Mono', 'Courier New', monospace;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-  z-index: 10;
-}
-
-.copy-button:hover {
-  opacity: 1;
+  font-size: 0.95em;
+  line-height: 1.6;
 }
 
 /* Responsive Design */
