@@ -1,8 +1,8 @@
 ---
 layout: category
-title: ARCHIVE
-category: ARCHIVE
-permalink: categories/archive/
+title: ARCHIVES
+category: Archive
+permalink: categories/Archive/
 ---
 
 # Archive
