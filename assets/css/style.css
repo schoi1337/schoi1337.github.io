@@ -149,7 +149,12 @@ pre {
   position: relative;
 }
 
-/* Copy button style */
+/* Code Block Wrapper */
+.code-block {
+  position: relative;
+}
+
+/* Copy Button */
 .copy-button {
   position: absolute;
   top: 0.75em;
@@ -159,11 +164,12 @@ pre {
   border: 1px solid #302D41;
   border-radius: 5px;
   padding: 0.25em 0.6em;
-  font-size: 0.8em;
+  font-size: 0.75em;
   font-family: 'JetBrains Mono', 'Courier New', monospace;
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s ease;
+  z-index: 10;
 }
 
 .copy-button:hover {

@@ -38,4 +38,23 @@
   {% if site.favicon %}
     <link rel="icon" href="{{ site.favicon | relative_url }}">
   {% endif %}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.copy-button').forEach(button => {
+        button.addEventListener('click', function() {
+          const code = button.nextElementSibling.querySelector('code');
+          if (!code) return;
+    
+          navigator.clipboard.writeText(code.innerText).then(() => {
+            button.textContent = 'Copied!';
+            setTimeout(() => button.textContent = 'Copy', 1500);
+          }).catch(err => {
+            console.error('Failed to copy!', err);
+          });
+        });
+      });
+    });
+    </script>
+    
 </head>
