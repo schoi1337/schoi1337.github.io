@@ -5,10 +5,10 @@ category : About
 permalink: /About/
 ---
 
-This blog is my personal workspace — a place where I document what I learn, break, fix, and discover.  
+This blog is my personal workspace 🍵 a place where I document what I learn, break, fix, and discover.  
 You’ll find writeups for HackTheBox machines, vulnerability analysis, proofs of concept, and everything in between.
 
-My main focus right now is growing as a penetration tester, sharpening my practical skills, and building a career with real-world expertise.
+My main focus right now is growing as a cyber security specialist, sharpening my practical skills, and building a career with real-world expertise.
 
 **Things I believe in:**
 - **Hands-on experience > Theory**
