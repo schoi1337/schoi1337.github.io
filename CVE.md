@@ -1,6 +1,6 @@
 ---
 layout: category
-title: CVE
+title: CVE Analysis
 category: CVE
 permalink: /categories/CVE/
 ---

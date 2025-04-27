@@ -6,17 +6,20 @@ permalink: /About/
 ---
 
 This blog is my personal workspace 🍵 a place where I document what I learn, break, fix, and discover.  
-You’ll find writeups for HackTheBox machines, vulnerability analysis, proofs of concept, and everything in between.
+You’ll find writeups for Hack The Box machines, vulnerability analysis, proofs of concept, and everything in between.
 
 My main focus right now is growing as a cyber security specialist, sharpening my practical skills, and building a career with real-world expertise.
 
-**Things I believe in:**
-- **Hands-on experience > Theory**
-- **Consistency > Intensity**
-- **Progress > Perfection**
+Things I believe in:
+- Hands-on experience > Theory
+- Consistency > Intensity
+- Progress > Perfection
 
 If you're curious about my notes, want to discuss ideas, or just want to say hi, feel free to reach out.
 
+[Email](mailto:schoi13337@gmail.com)
+
 [Github](https://github.com/schoi1337)
 
-[Hack the Box]()
+[Hack the Box](https://app.hackthebox.com/profile/74001)
+
