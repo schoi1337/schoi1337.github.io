@@ -149,21 +149,6 @@ code {
   font-size: 0.875em;
 }
 
-/* Preformatted text (handled by Prism Darcula now) */
-pre {
-  overflow-x: auto;
-}
-
-/* Wrapper for code block and copy button */
-.code-block {
-  position: relative;
-}
-
-/* Code Block Wrapper */
-.code-block {
-  position: relative;
-}
-
 /* Responsive Design */
 @media (max-width: 600px) {
   .wrapper {
