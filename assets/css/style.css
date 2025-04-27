@@ -131,7 +131,6 @@ a:hover {
   background-color: #1d1f21;
 }
 
-/* Lucy Theme for Code Blocks (Visual Studio Code version) */
 pre, code {
   font-family: 'JetBrains Mono', monospace;
   background-color: #2b2b2b;
@@ -154,44 +153,44 @@ code {
   font-size: 0.9em;
 }
 
-/* Molokai theme for code blocks  */
+/* Lucy Theme for Code Blocks (Visual Studio Code Version) */
 .highlight pre, .highlight code {
-  background: #272822;
-  color: #f8f8f2;
+  background: #2b2b2b;
+  color: #e6e1dc;
 }
 
-.highlight .c { color: #75715e; font-style: italic; } /* Comment */
-.highlight .err { color: #960050; background-color: #1e0010; } /* Error */
-.highlight .k { color: #66d9ef; } /* Keyword */
-.highlight .o { color: #f92672; } /* Operator */
-.highlight .cm { color: #75715e; font-style: italic; } /* Multiline Comment */
-.highlight .cp { color: #75715e; font-style: italic; } /* Preprocessor */
-.highlight .c1 { color: #75715e; font-style: italic; } /* Single-line Comment */
-.highlight .cs { color: #75715e; font-style: italic; } /* Special Comment */
-.highlight .gd { color: #f92672; } /* Generic.Deleted */
-.highlight .gi { color: #a6e22e; } /* Generic.Inserted */
-.highlight .go { color: #75715e; } /* Generic.Output */
-.highlight .gp { color: #75715e; } /* Generic.Prompt */
-.highlight .gu { color: #75715e; } /* Generic.Subheading */
-.highlight .kc { color: #66d9ef; } /* Keyword.Constant */
-.highlight .kd { color: #66d9ef; } /* Keyword.Declaration */
-.highlight .kn { color: #f92672; } /* Keyword.Namespace */
-.highlight .kp { color: #66d9ef; } /* Keyword.Pseudo */
-.highlight .kr { color: #66d9ef; } /* Keyword.Reserved */
-.highlight .kt { color: #66d9ef; } /* Keyword.Type */
-.highlight .m { color: #ae81ff; } /* Literal.Number */
-.highlight .s { color: #e6db74; } /* Literal.String */
-.highlight .na { color: #a6e22e; } /* Name.Attribute */
-.highlight .nb { color: #f8f8f2; } /* Name.Builtin */
-.highlight .nc { color: #a6e22e; } /* Name.Class */
-.highlight .no { color: #66d9ef; } /* Name.Constant */
-.highlight .nd { color: #a6e22e; } /* Name.Decorator */
-.highlight .ne { color: #f92672; } /* Name.Exception */
-.highlight .nf { color: #a6e22e; } /* Name.Function */
-.highlight .nn { color: #f8f8f2; } /* Name.Namespace */
-.highlight .nt { color: #f92672; } /* Name.Tag */
-.highlight .nv { color: #f8f8f2; } /* Name.Variable */
-.highlight .w { color: #f8f8f2; } /* Text.Whitespace */
+.highlight .c  { color: #808080; font-style: italic; } /* Comment */
+.highlight .err { color: #ff5555; background-color: #1e0010; } /* Error */
+.highlight .k  { color: #cc7832; } /* Keyword */
+.highlight .o  { color: #a9b7c6; } /* Operator */
+.highlight .cm { color: #808080; font-style: italic; } /* Multiline Comment */
+.highlight .cp { color: #808080; font-style: italic; } /* Preprocessor */
+.highlight .c1 { color: #808080; font-style: italic; } /* Single-line Comment */
+.highlight .cs { color: #808080; font-style: italic; } /* Special Comment */
+.highlight .gd { color: #ff5555; } /* Deleted */
+.highlight .gi { color: #a5c261; } /* Inserted */
+.highlight .go { color: #808080; } /* Output */
+.highlight .gp { color: #ffc66d; } /* Prompt */
+.highlight .gu { color: #ffc66d; } /* Subheading */
+.highlight .kc { color: #cc7832; } /* Keyword.Constant */
+.highlight .kd { color: #cc7832; } /* Keyword.Declaration */
+.highlight .kn { color: #cc7832; } /* Keyword.Namespace */
+.highlight .kp { color: #cc7832; } /* Keyword.Pseudo */
+.highlight .kr { color: #cc7832; } /* Keyword.Reserved */
+.highlight .kt { color: #a9b7c6; } /* Keyword.Type */
+.highlight .m  { color: #6897bb; } /* Number */
+.highlight .s  { color: #a5c261; } /* String */
+.highlight .na { color: #ffc66d; } /* Attribute */
+.highlight .nb { color: #a9b7c6; } /* Builtin */
+.highlight .nc { color: #a5c261; } /* Class */
+.highlight .no { color: #a5c261; } /* Constant */
+.highlight .nd { color: #ffc66d; } /* Decorator */
+.highlight .ne { color: #ff5555; } /* Exception */
+.highlight .nf { color: #ffc66d; } /* Function */
+.highlight .nn { color: #e6e1dc; } /* Namespace */
+.highlight .nt { color: #cc7832; } /* Tag */
+.highlight .nv { color: #e6e1dc; } /* Variable */
+.highlight .w  { color: #e6e1dc; } /* Whitespace */
 
 /* Responsive Design */
 @media (max-width: 600px) {
