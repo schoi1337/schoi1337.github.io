@@ -1,7 +1,7 @@
 ---
 layout: category
-title: Archive
-category: Archive
+title: Projects
+category: PROJECTS
 permalink: /categories/Archive/
 ---
 
