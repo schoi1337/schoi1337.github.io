@@ -4,7 +4,7 @@ baseurl: ""
 url: "https://schoi1337.github.io" 
 
 markdown: kramdown
-highlighter: rouge
+highlighter: none
 theme: null
 plugins:
   - jekyll-feed
