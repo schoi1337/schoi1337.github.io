@@ -131,56 +131,69 @@ a:hover {
   background-color: #1d1f21;
 }
 
-/* Code block styling inspired by Cyberdream.nvim (for Rouge syntax) */
+/* Code block styling inspired by Cyberdream.nvim (official alacritty theme) */
 pre, code {
-  background-color: #1E1E2E; /* dark background */
-  color: #E0DEF4; /* default text color */
-  font-family: 'JetBrains Mono', monospace;
+  background-color: #212123; /* background */
+  color: #E0DEF4; /* default text */
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 0.95em;
   line-height: 1.5;
   overflow-x: auto;
   border-radius: 8px;
   padding: 1em;
-  text-shadow: 0 0 4px rgba(224, 222, 244, 0.2); /* soft glow effect */
-  box-shadow: 0 0 8px rgba(224, 222, 244, 0.1); /* subtle outer shadow */
 }
 
-/* Rouge syntax highlighting */
+/* Syntax highlighting for Rouge classes */
 pre .c, code .c { /* comments */
   color: #6E6C7E;
   font-style: italic;
-  text-shadow: 0 0 3px rgba(110, 108, 126, 0.5);
 }
 
 pre .k, code .k { /* keywords */
-  color: #89B4FA;
+  color: #96CDFB;
   font-weight: bold;
-  text-shadow: 0 0 3px rgba(137, 180, 250, 0.4);
 }
 
 pre .s, code .s { /* strings */
   color: #ABE9B3;
-  text-shadow: 0 0 3px rgba(171, 233, 179, 0.4);
 }
 
 pre .nf, code .nf { /* function names */
   color: #89DCEB;
-  text-shadow: 0 0 3px rgba(137, 220, 235, 0.4);
 }
 
 pre .nc, code .nc { /* class names / types */
   color: #DDB6F2;
-  text-shadow: 0 0 3px rgba(221, 182, 242, 0.4);
 }
 
 pre .m, code .m { /* numbers */
-  color: #74C7EC;
-  text-shadow: 0 0 3px rgba(116, 199, 236, 0.4);
+  color: #FAE3B0;
 }
 
 pre .nv, code .nv { /* variables */
+  color: #C3BAC6;
+}
+
+/* Line numbers styling */
+pre.lineno, code.lineno {
+  color: #988BA2; /* bright black */
+  background-color: #1B1B2B; /* match background */
+  padding-right: 1em;
+  text-align: right;
+  user-select: none;
+}
+
+/* Selection styling */
+::selection {
+  background: #302D41; /* Cyberdream selection background */
+  color: #E0DEF4; /* selection text color */
+}
+
+::-moz-selection {
+  background: #302D41;
   color: #E0DEF4;
 }
+
 
 /* Responsive Design */
 @media (max-width: 600px) {
