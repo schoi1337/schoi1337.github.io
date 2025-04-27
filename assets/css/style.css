@@ -20,7 +20,7 @@ a:hover {
 
 /* Site Header */
 .site-header {
-  background-color: #1d1f21;
+  background-color: #191a1a;
   padding: 20px 0;
   color: #aaa;
 }
@@ -65,7 +65,7 @@ a:hover {
   max-width: 960px;
   margin: 40px auto;
   padding: 0 20px;
-  background-color: #1d1f21;
+  background-color: #191a1a;
   border-radius: 8px;
 }
 
