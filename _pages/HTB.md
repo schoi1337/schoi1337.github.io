@@ -1,7 +1,9 @@
 ---
-layout: page
-title: HTB Writeups
+layout: category
+title: Hack The Box Writeups
+category: HTB
+permalink: /categories/HTB/
 ---
 
-This is a sample page. 
+Hack the Box writeups that I've done. 
 
