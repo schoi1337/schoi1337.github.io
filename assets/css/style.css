@@ -20,19 +20,31 @@ body {
   /* Header */
   .site-header {
     padding: 20px 0;
-    background-color: #1d1f21;
+    background-color:  #1d1f21;
+  }
+
+  .wrapper {
+    max-width: 960px; /* ✅ .content와 같은 너비 */
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   
   .site-title {
-    font-size: 1.8em;
-    font-weight: 600;
+    font-size: 1.8em; /* ✅ Dark Poole 기준 */
+    font-weight: bold;
+    margin: 0;
+    color: inherit; /* ✅ 본문 색상 상속 */
+    text-decoration: none;
   }
   
   /* Navigation */
   .site-nav {
-    float: right;
+    /* float: right; */
     font-size: 0.95rem;
-    margin-top: 8px;
+    /* margin-top: 8px; */
   }
   
   .site-nav a {
