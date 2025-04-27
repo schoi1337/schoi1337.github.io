@@ -17,6 +17,9 @@ Things I believe in:
 
 If you're curious about my notes, want to discuss ideas, or just want to say hi, feel free to reach out.
 
+[Email](mailto:schoi13337@gmail.com)
+
 [Github](https://github.com/schoi1337)
 
-[Hack the Box]()
+[Hack the Box](https://app.hackthebox.com/profile/74001)
+
