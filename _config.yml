@@ -3,12 +3,11 @@ description: "Exploring cybersecurity and ethical hacking through hands-on pract
 baseurl: "" 
 url: "https://schoi1337.github.io" 
 
+
+highlighter: none
 markdown: kramdown
 kramdown:
-  syntax_highlighter_opts:
-    block:
-      template: code_block
-highlighter: none
+  syntax_highlighter: nil
 theme: null
 plugins:
   - jekyll-feed
@@ -28,6 +27,12 @@ defaults:
       type: "posts"
     values:
       layout: post
+      highlighter: none
+      markdown: kramdown
+      kramdown:
+        syntax_highlighter_opts:
+          block:
+            template: code_block
   - scope:
       path: "_pages"
       type: "pages"
