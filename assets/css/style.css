@@ -48,7 +48,7 @@ body {
   
   /* Content */
   .content {
-    max-width: 800px;
+    max-width: 960px;
     margin: 40px auto;
     padding: 0 20px;
   }
@@ -121,9 +121,11 @@ pre, code {
   font-family: 'JetBrains Mono', monospace;
   background-color: #0d0d0d; /* 아주 어두운 배경 */
   color: #39ff14; /* 기본 텍스트 네온 그린 */
-  padding: 0.5em 0.75em;
+  padding: 0.5em 0.5em;
   border-radius: 6px;
-  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: hidden; /* 줄 바꿈 허용 */
   font-size: 0.9em;
 }
 
