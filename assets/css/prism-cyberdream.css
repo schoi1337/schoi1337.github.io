@@ -1,15 +1,15 @@
-/* Prism Cyberdream Theme */
+/* Prism.js Cyberdream Theme */
 
 code[class*="language-"],
 pre[class*="language-"] {
   background: #0E0E0E;
   color: #E0DEF4;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.95em;
   line-height: 1.5;
   border-radius: 8px;
   padding: 1em;
-  white-space: pre-wrap;
+  white-space: pre-wrap; /* 자동 줄바꿈 */
   word-break: break-word;
   word-wrap: break-word;
   overflow-x: hidden;
