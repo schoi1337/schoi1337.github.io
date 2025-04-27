@@ -1,9 +1,9 @@
 ---
 layout: category
-title: Hack The Box Writeups
+title: HTB
 category: HTB
 permalink: /categories/HTB/
 ---
 
-Hack the Box writeups that I've done. 
+# Hack the Box Writeups
 

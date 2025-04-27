@@ -2,7 +2,7 @@
 layout: post
 title: Example content
 date: 2020-04-02
-categories: Other
+categories: archive
 
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: category
 title: Archive
+category: archive
 permalink: categories/archive/
 ---
 
