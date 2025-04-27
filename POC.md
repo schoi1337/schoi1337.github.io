@@ -1,6 +1,6 @@
 ---
 layout: category
-title: PoC
+title: PoCs
 category: POC
 permalink: /categories/POC/
 ---
