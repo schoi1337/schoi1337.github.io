@@ -131,25 +131,23 @@ a:hover {
   background-color: #1d1f21;
 }
 
-/* Code block styling inspired by Cyberdream.nvim (official alacritty theme) */
+/* Code block base */
 .highlight {
-  .highlight {
-    background-color: #181818;
-    color: #E0DEF4;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 0.95em;
-    line-height: 1.5;
-    border-radius: 8px;
-    padding: 1em;
-  
-    overflow-x: hidden; /* 가로 스크롤 비허용 */
-    white-space: pre-wrap; /* 공백 유지 + 자동 줄바꿈 */
-    word-break: break-word; /* 단어 안에서도 줄바꿈 */
-    word-wrap: break-word; /* 오래된 브라우저 호환용 */
-  }
-  
+  background-color: #252526;
+  color: #E0DEF4;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95em;
+  line-height: 1.5;
+  border-radius: 8px;
+  padding: 1em;
 
-/* Syntax highlighting inside .highlight */
+  overflow-x: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+/* Syntax highlighting */
 .highlight .c { /* comments */
   color: #6E6C7E;
   font-style: italic;
@@ -164,11 +162,11 @@ a:hover {
   color: #ABE9B3;
 }
 
-.highlight .nf { /* function names */
+.highlight .nf { /* function name */
   color: #89DCEB;
 }
 
-.highlight .nc { /* class names / types */
+.highlight .nc { /* class/type name */
   color: #DDB6F2;
 }
 
@@ -180,25 +178,59 @@ a:hover {
   color: #C3BAC6;
 }
 
-/* Line numbers styling */
-.highlight .lineno {
-  color: #988BA2; /* bright black */
-  background-color: #1B1B2B; /* match background */
-  padding-right: 1em;
-  text-align: right;
-  user-select: none;
+.highlight .o { /* operators like +, -, * */
+  color: #F28FAD;
 }
 
-/* Selection styling */
-.highlight ::selection {
-  background: #302D41; /* Cyberdream selection background */
+.highlight .p { /* punctuation (.,(),{}) */
   color: #E0DEF4;
 }
 
-.highlight ::-moz-selection {
-  background: #302D41;
-  color: #E0DEF4;
+.highlight .err { /* errors */
+  background-color: #F28FAD;
+  color: #1B1B2B;
+  font-weight: bold;
 }
+
+.highlight .gd { /* deleted diff */
+  color: #F28FAD;
+  background-color: #302D41;
+}
+
+.highlight .gi { /* inserted diff */
+  color: #ABE9B3;
+  background-color: #302D41;
+}
+
+.highlight .kt { /* types */
+  color: #DDB6F2;
+}
+
+.highlight .na { /* attribute names */
+  color: #F5C2E7;
+}
+
+.highlight .nt { /* tags like <div> */
+  color: #96CDFB;
+  font-weight: bold;
+}
+
+.highlight .bp { /* builtins like 'self', 'this' */
+  color: #89DCEB;
+}
+
+.highlight .vc, .highlight .vg, .highlight .vi { /* variable classes */
+  color: #C3BAC6;
+}
+
+.highlight .w { /* whitespace */
+  color: #1B1B2B;
+}
+
+.highlight .sc { /* special chars */
+  color: #FAE3B0;
+}
+
 
 /* Responsive Design */
 @media (max-width: 600px) {
