@@ -8,7 +8,7 @@ body {
 
 /* Links */
 a {
-  color: #81a2be;
+  color: #07f1a3;
   text-decoration: none;
 }
 
@@ -87,11 +87,12 @@ a:hover {
 }
 
 .posts .post-title a {
-  color: inherit;
+  color: #07f1a3;
   text-decoration: none;
 }
 
 .posts .post-title a:hover {
+  color: #07f1a3;
   text-decoration: underline;
 }
 
