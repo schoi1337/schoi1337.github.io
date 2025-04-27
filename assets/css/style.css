@@ -173,7 +173,7 @@ code {
 
 /* Table of Contents Wrapper (sticky inside post-content) */
 #toc-wrapper {
-  position: sticky;
+  position: fixed;
   top: 20px; /* when scrolling, stick to 20px from top inside post-content */
   float: right;
   width: 220px;
