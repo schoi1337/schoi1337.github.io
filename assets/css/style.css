@@ -133,104 +133,111 @@ a:hover {
 
 /* Code block base */
 .highlight {
-  background-color: #0e0e0e;
+  background-color: #0E0E0E;
   color: #E0DEF4;
   font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0.1em;
+  font-size: 0.95em;
   line-height: 1.5;
   border-radius: 8px;
-  padding: 0.75em;
-
+  padding: 1em;
   overflow-x: hidden;
   white-space: pre-wrap;
   word-break: break-word;
   word-wrap: break-word;
 }
 
-/* Syntax highlighting */
-.highlight .c { /* comments */
-  color: #6E6C7E;
-  font-style: italic;
-}
+/* Comments */
+.highlight .c { color: #6E6C7E; font-style: italic; }
 
-.highlight .k { /* keywords */
-  color: #96CDFB;
+/* Keywords */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr { 
+  color: #96CDFB; 
   font-weight: bold;
 }
 
-.highlight .s { /* strings */
+/* Types (Class/Type Names) */
+.highlight .kt, .highlight .nc { color: #DDB6F2; }
+
+/* Functions and Methods */
+.highlight .nf, .highlight .fm { color: #89DCEB; }
+
+/* Constants, Builtins */
+.highlight .no, .highlight .bp { color: #F8BD96; }
+
+/* Variables */
+.highlight .nv, .highlight .vi, .highlight .vg, .highlight .vc { color: #C3BAC6; }
+
+/* Strings */
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .sd, 
+.highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss {
   color: #ABE9B3;
 }
 
-.highlight .nf { /* function name */
-  color: #89DCEB;
-}
-
-.highlight .nc { /* class/type name */
-  color: #DDB6F2;
-}
-
-.highlight .m { /* numbers */
+/* Numbers */
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo {
   color: #FAE3B0;
 }
 
-.highlight .nv { /* variables */
-  color: #C3BAC6;
-}
+/* Operators */
+.highlight .o { color: #F28FAD; }
 
-.highlight .o { /* operators like +, -, * */
-  color: #F28FAD;
-}
+/* Punctuation */
+.highlight .p { color: #E0DEF4; }
 
-.highlight .p { /* punctuation (.,(),{}) */
-  color: #E0DEF4;
-}
+/* Attributes */
+.highlight .na { color: #F5C2E7; }
 
-.highlight .err { /* errors */
+/* Tags (like <div>) */
+.highlight .nt { color: #96CDFB; font-weight: bold; }
+
+/* Error */
+.highlight .err {
   background-color: #F28FAD;
-  color: #1B1B2B;
+  color: #0E0E0E;
   font-weight: bold;
 }
 
-.highlight .gd { /* deleted diff */
+/* Diffs */
+.highlight .gd {
   color: #F28FAD;
   background-color: #302D41;
 }
-
-.highlight .gi { /* inserted diff */
+.highlight .gi {
   color: #ABE9B3;
   background-color: #302D41;
 }
 
-.highlight .kt { /* types */
-  color: #DDB6F2;
+/* Special Characters */
+.highlight .sc { color: #FAE3B0; }
+
+/* Whitespace (invisible) */
+.highlight .w { color: #0E0E0E; }
+
+/* Wrapper for code block and copy button */
+.code-block {
+  position: relative;
 }
 
-.highlight .na { /* attribute names */
-  color: #F5C2E7;
+/* Copy button style */
+.copy-button {
+  position: absolute;
+  top: 0.75em;
+  right: 0.75em;
+  background-color: #1E1E2E;
+  color: #E0DEF4;
+  border: 1px solid #302D41;
+  border-radius: 5px;
+  padding: 0.25em 0.6em;
+  font-size: 0.8em;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
 }
 
-.highlight .nt { /* tags like <div> */
-  color: #96CDFB;
-  font-weight: bold;
+.copy-button:hover {
+  opacity: 1;
 }
-
-.highlight .bp { /* builtins like 'self', 'this' */
-  color: #89DCEB;
-}
-
-.highlight .vc, .highlight .vg, .highlight .vi { /* variable classes */
-  color: #C3BAC6;
-}
-
-.highlight .w { /* whitespace */
-  color: #1B1B2B;
-}
-
-.highlight .sc { /* special chars */
-  color: #FAE3B0;
-}
-
 
 /* Responsive Design */
 @media (max-width: 600px) {
