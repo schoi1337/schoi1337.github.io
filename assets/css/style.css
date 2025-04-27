@@ -2,14 +2,14 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background-color: #1d1f21;
+    background-color: #151718;
     color: #c5c8c6;
     line-height: 1.6;
   }
   
   /* Links */
   a {
-    color: #04fec8;
+    color: #03ef99;
     text-decoration: none;
   }
   
@@ -30,12 +30,20 @@ body {
   
   /* Navigation */
   .site-nav {
-    margin-top: 10px;
+    float: right;
+    font-size: 0.95rem;
+    margin-top: 8px;
   }
   
   .site-nav a {
-    margin-right: 15px;
-    font-weight: 500;
+    color: inherit;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 400;
+  }
+  
+  .site-nav a:hover {
+    text-decoration: underline;
   }
   
   /* Content */
@@ -66,11 +74,12 @@ body {
   }
   
   .posts .post-title a {
-    color: inherit;
+    color: #03ef99;
     text-decoration: none;
   }
   
   .posts .post-title a:hover {
+    color: #03ef99;
     text-decoration: underline;
   }
   
@@ -109,11 +118,12 @@ body {
   /* Lucy Theme for Code Blocks */
   pre, code {
     font-family: 'JetBrains Mono', monospace;
-    background-color: #2b2b2b;
+    background-color: #202225;
     color: #e6e1dc;
     padding: 0.5em 0.75em;
     border-radius: 6px;
     overflow-x: auto;
+    font-size: 0.9em;
   }
   
   pre {
@@ -123,7 +133,7 @@ body {
   }
   
   code {
-    font-size: 0.95em;
+    font-size: 0.9em;
   }
   
   /* Syntax Highlighting Specific */
