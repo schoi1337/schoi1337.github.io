@@ -133,13 +133,13 @@ a:hover {
 
 /* Code block base */
 .highlight {
-  background-color: #252526;
+  background-color: #0e0e0e;
   color: #E0DEF4;
   font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0.95em;
+  font-size: 0.1em;
   line-height: 1.5;
   border-radius: 8px;
-  padding: 1em;
+  padding: 0.75em;
 
   overflow-x: hidden;
   white-space: pre-wrap;
