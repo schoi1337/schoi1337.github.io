@@ -8,15 +8,12 @@ layout: default
     <p class="post-meta">{{ page.date | date: "%B %d, %Y" }}</p>
   </header>
 
-  <!-- TOC Toggle Button (for mobile) -->
-  <button id="toc-toggle-btn">TOC</button>
-
-  <!-- Table of Contents Wrapper -->
-  <div id="toc-wrapper">
-    <nav id="toc"></nav>
-  </div>
-
   <div class="post-content">
+    <!-- TOC placed inside post-content, floating at top-right -->
+    <div id="toc-wrapper">
+      <nav id="toc"></nav>
+    </div>
+
     {{ content }}
   </div>
 </article>

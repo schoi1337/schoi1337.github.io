@@ -171,20 +171,22 @@ code {
   }
 }
 
-/* Table of Contents Wrapper */
+/* Table of Contents Wrapper (inside post-content) */
 #toc-wrapper {
-  position: fixed;
-  top: 120px;
-  right: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 220px;
   max-height: 70vh;
   overflow-y: auto;
+  background: none;
   font-family: 'Inter', sans-serif;
   font-size: 13.5px;
-  z-index: 1000;
+  margin-top: 0;
+  margin-right: 0;
 }
 
-/* Table of Contents Links */
+/* TOC Links */
 #toc a {
   display: block;
   padding: 5px 0;
@@ -220,29 +222,15 @@ html {
   scroll-behavior: smooth;
 }
 
-/* TOC Toggle Button */
-#toc-toggle-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 8px 14px;
-  background: #222;
-  color: #eee;
-  border: 1px solid #444;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  cursor: pointer;
-  z-index: 1100;
-  display: none; /* Hidden by default */
+/* Adjust post-content to not overlap with TOC */
+.post-content {
+  position: relative;
+  padding-right: 260px; /* leave space for TOC */
 }
 
-/* Mobile view adjustments */
+/* Mobile view: hide TOC */
 @media (max-width: 768px) {
   #toc-wrapper {
     display: none;
-  }
-  #toc-toggle-btn {
-    display: block;
   }
 }
