@@ -45,25 +45,57 @@ body {
     padding: 0 20px;
   }
   
-  /* Posts */
-  .post {
+  /* Posts Section (Main Page + Category Page) */
+  .posts {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .posts .post {
+    margin-bottom: 4rem;
+  }
+  
+  .posts .post-header {
+    margin-bottom: 0.5rem;
+  }
+  
+  .posts .post-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .posts .post-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .posts .post-title a:hover {
+    text-decoration: underline;
+  }
+  
+  .posts .post-meta {
+    color: #777;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+  }
+  
+  .posts .post-excerpt {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #aaa;
+    line-height: 1.6;
+  }
+  
+  /* Page */
+  .page {
     margin-bottom: 60px;
   }
   
-  .post-title {
-    margin: 0;
-    font-size: 1.6em;
-  }
-  
-  .post-meta {
-    color: #777;
-    font-size: 0.9em;
+  .page-title {
+    font-size: 2em;
+    font-weight: 600;
     margin-bottom: 10px;
-  }
-  
-  /* Post Content */
-  .post-content {
-    margin-top: 20px;
   }
   
   /* Footer */
@@ -74,25 +106,57 @@ body {
     color: #777;
   }
   
-  /* Code Blocks */
+  /* Lucy Theme for Code Blocks */
   pre, code {
     font-family: 'JetBrains Mono', monospace;
-    background-color: #2d2d2d;
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
+    background-color: #2b2b2b;
+    color: #e6e1dc;
+    padding: 0.5em 0.75em;
+    border-radius: 6px;
     overflow-x: auto;
   }
   
   pre {
-    padding: 15px;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
   
-  /* Excerpt for category list */
-  .post-excerpt {
-    margin-top: 10px;
-    color: #aaa;
+  code {
     font-size: 0.95em;
   }
+  
+  /* Syntax Highlighting Specific */
+  .highlight .c { color: #7f7f7f; font-style: italic; } /* Comment */
+  .highlight .k { color: #cc7832; } /* Keyword */
+  .highlight .o { color: #a9b7c6; } /* Operator */
+  .highlight .cm { color: #7f7f7f; font-style: italic; } /* Comment.Multiline */
+  .highlight .cp { color: #6897bb; } /* Comment.Preproc */
+  .highlight .c1 { color: #7f7f7f; } /* Comment.Single */
+  .highlight .cs { color: #7f7f7f; } /* Comment.Special */
+  .highlight .gd { color: #ff5555; } /* Generic.Deleted */
+  .highlight .gi { color: #a5c261; } /* Generic.Inserted */
+  .highlight .gp { color: #ffc66d; } /* Generic.Prompt */
+  .highlight .gu { color: #ffc66d; } /* Generic.Subheading */
+  .highlight .kc { color: #cc7832; } /* Keyword.Constant */
+  .highlight .kd { color: #cc7832; } /* Keyword.Declaration */
+  .highlight .kn { color: #cc7832; } /* Keyword.Namespace */
+  .highlight .kp { color: #cc7832; } /* Keyword.Pseudo */
+  .highlight .kr { color: #cc7832; } /* Keyword.Reserved */
+  .highlight .kt { color: #a9b7c6; } /* Keyword.Type */
+  .highlight .m { color: #6897bb; } /* Literal.Number */
+  .highlight .s { color: #a5c261; } /* Literal.String */
+  .highlight .na { color: #ffc66d; } /* Name.Attribute */
+  .highlight .nb { color: #a9b7c6; } /* Name.Builtin */
+  .highlight .nc { color: #a5c261; } /* Name.Class */
+  .highlight .no { color: #a5c261; } /* Name.Constant */
+  .highlight .nd { color: #ffc66d; } /* Name.Decorator */
+  .highlight .ne { color: #ff5555; } /* Name.Exception */
+  .highlight .nf { color: #ffc66d; } /* Name.Function */
+  .highlight .nn { color: #e6e1dc; } /* Name.Namespace */
+  .highlight .nt { color: #cc7832; } /* Name.Tag */
+  .highlight .nv { color: #e6e1dc; } /* Name.Variable */
+  .highlight .w { color: #e6e1dc; } /* Text.Whitespace */
   
   /* Responsive */
   @media (max-width: 600px) {
@@ -104,34 +168,5 @@ body {
     .content {
       padding: 0 15px;
     }
-  }
-  
-/* Post List (Main + Category) */
-.posts {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-  
-  .posts .post {
-    margin-bottom: 60px;
-  }
-  
-  .posts .post-title {
-    font-size: 1.6em;
-    margin: 0 0 5px 0;
-    font-weight: 600;
-  }
-  
-  .posts .post-meta {
-    font-size: 0.9em;
-    color: #777;
-    margin-bottom: 10px;
-  }
-  
-  .posts .post-excerpt {
-    color: #aaa;
-    font-size: 0.95em;
-    margin-top: 10px;
   }
   
