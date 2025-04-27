@@ -132,50 +132,56 @@ a:hover {
 }
 
 /* Code block styling inspired by Cyberdream.nvim (official alacritty theme) */
-pre, code {
-  background-color: #212123; /* background */
-  color: #E0DEF4; /* default text */
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0.95em;
-  line-height: 1.5;
-  overflow-x: auto;
-  border-radius: 8px;
-  padding: 1em;
-}
+.highlight {
+  .highlight {
+    background-color: #181818;
+    color: #E0DEF4;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.95em;
+    line-height: 1.5;
+    border-radius: 8px;
+    padding: 1em;
+  
+    overflow-x: hidden; /* 가로 스크롤 비허용 */
+    white-space: pre-wrap; /* 공백 유지 + 자동 줄바꿈 */
+    word-break: break-word; /* 단어 안에서도 줄바꿈 */
+    word-wrap: break-word; /* 오래된 브라우저 호환용 */
+  }
+  
 
-/* Syntax highlighting for Rouge classes */
-pre .c, code .c { /* comments */
+/* Syntax highlighting inside .highlight */
+.highlight .c { /* comments */
   color: #6E6C7E;
   font-style: italic;
 }
 
-pre .k, code .k { /* keywords */
+.highlight .k { /* keywords */
   color: #96CDFB;
   font-weight: bold;
 }
 
-pre .s, code .s { /* strings */
+.highlight .s { /* strings */
   color: #ABE9B3;
 }
 
-pre .nf, code .nf { /* function names */
+.highlight .nf { /* function names */
   color: #89DCEB;
 }
 
-pre .nc, code .nc { /* class names / types */
+.highlight .nc { /* class names / types */
   color: #DDB6F2;
 }
 
-pre .m, code .m { /* numbers */
+.highlight .m { /* numbers */
   color: #FAE3B0;
 }
 
-pre .nv, code .nv { /* variables */
+.highlight .nv { /* variables */
   color: #C3BAC6;
 }
 
 /* Line numbers styling */
-pre.lineno, code.lineno {
+.highlight .lineno {
   color: #988BA2; /* bright black */
   background-color: #1B1B2B; /* match background */
   padding-right: 1em;
@@ -184,16 +190,15 @@ pre.lineno, code.lineno {
 }
 
 /* Selection styling */
-::selection {
+.highlight ::selection {
   background: #302D41; /* Cyberdream selection background */
-  color: #E0DEF4; /* selection text color */
-}
-
-::-moz-selection {
-  background: #302D41;
   color: #E0DEF4;
 }
 
+.highlight ::-moz-selection {
+  background: #302D41;
+  color: #E0DEF4;
+}
 
 /* Responsive Design */
 @media (max-width: 600px) {
