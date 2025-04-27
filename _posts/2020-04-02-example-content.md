@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Example content
-published: false
+date: 2020-04-02
+categories: Other
 
 ---
 
