@@ -136,7 +136,7 @@ a:hover {
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: 'JetBrains Mono', monospace !important;
-  font-size: 0.875em;
+  font-size: 0.875em !important;
   line-height: 1.6;
 }
 
@@ -146,7 +146,7 @@ code {
   background-color: #302D41;
   padding: 0.2em 0.4em;
   border-radius: 4px;
-  font-size: 0.875em;
+  font-size: 0.875em !important;
 }
 
 /* Responsive Design */
