@@ -8,12 +8,12 @@ layout: default
     <p class="post-meta">{{ page.date | date: "%B %d, %Y" }}</p>
   </header>
 
-  <div class="post-content">
-    <!-- TOC placed inside post-content, floating at top-right -->
-    <div id="toc-wrapper">
-      <nav id="toc"></nav>
-    </div>
+  <!-- TOC fixed positioned -->
+  <div id="toc-wrapper">
+    <nav id="toc"></nav>
+  </div>
 
+  <div class="post-content">
     {{ content }}
   </div>
 </article>
