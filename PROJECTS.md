@@ -2,7 +2,7 @@
 layout: category
 title: Projects
 category: PROJECTS
-permalink: /categories/Archive/
+permalink: /categories/PROJECTS/
 ---
 
 # Archive
