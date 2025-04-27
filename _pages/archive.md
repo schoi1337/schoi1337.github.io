@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: category
 title: Archive
-permalink: /archive/
+permalink: categories/archive/
 ---
 
 # Archive
