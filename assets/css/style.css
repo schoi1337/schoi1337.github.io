@@ -171,19 +171,18 @@ code {
   }
 }
 
-/* Table of Contents Wrapper (inside post-content) */
+/* Table of Contents Wrapper (fixed to the right) */
 #toc-wrapper {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: fixed;
+  top: 120px; /* distance from top of the viewport */
+  right: 60px; /* distance from right */
   width: 220px;
   max-height: 70vh;
   overflow-y: auto;
-  background: none;
   font-family: 'Inter', sans-serif;
   font-size: 13.5px;
-  margin-top: 0;
-  margin-right: 0;
+  background: none;
+  z-index: 1000;
 }
 
 /* TOC Links */
@@ -224,8 +223,7 @@ html {
 
 /* Adjust post-content to not overlap with TOC */
 .post-content {
-  position: relative;
-  padding-right: 260px; /* leave space for TOC */
+  padding-right: 280px; /* make room for fixed TOC */
 }
 
 /* Mobile view: hide TOC */
