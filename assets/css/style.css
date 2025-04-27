@@ -130,9 +130,18 @@ a:hover {
   color: #777;
   background-color: #1d1f21;
 }
+
+/* 강제 폰트 적용 */
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
 /* Inline code */
 code {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', monospace;
   background-color: #302D41;
   padding: 0.2em 0.4em;
   border-radius: 4px;
@@ -152,14 +161,6 @@ pre {
 /* Code Block Wrapper */
 .code-block {
   position: relative;
-}
-
-/* Code block font setting */
-code[class*="language-"],
-pre[class*="language-"] {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0.95em;
-  line-height: 1.6;
 }
 
 /* Responsive Design */
