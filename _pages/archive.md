@@ -2,7 +2,7 @@
 layout: category
 title: ARCHIVES
 category: Archive
-permalink: categories/Archive/
+permalink: /categories/Archive/
 ---
 
 # Archive
