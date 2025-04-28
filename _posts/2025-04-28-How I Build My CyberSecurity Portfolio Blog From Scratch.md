@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '"How I Build My CyberSecurity Portfolio Blog From Scratch"'
+title: "How I Build My CyberSecurity Portfolio Blog From Scratch"
 date: 2025-04-28
 categories: "[PROJECTS]"
 tags: [Cybersecurity Portfolio, Jekyll Blog, GitHub Pages, HackTheBox Writeups, CVE Analysis, Proof of Concept, SEO, Technical Growth]

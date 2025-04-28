@@ -80,6 +80,13 @@ a:hover {
   margin-bottom: 4rem;
 }
 
+.post img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .posts .post-header {
   margin-bottom: 0.5rem;
 }
