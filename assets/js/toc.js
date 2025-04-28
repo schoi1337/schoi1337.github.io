@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const toc = document.getElementById('toc');
-    const headings = document.querySelectorAll('main h2, main h3');
+    const headings = document.querySelectorAll('.post-content h2, .post-content h3');
   
     if (!toc || headings.length === 0) return;
   
@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
       const link = document.createElement('a');
       link.href = '#' + heading.id;
       link.textContent = heading.textContent;
-      link.dataset.depth = heading.tagName[1]; // Save depth (2 or 3)
+      link.dataset.depth = heading.tagName[1]; // 2 or 3
       toc.appendChild(link);
     });
   
     const tocLinks = toc.querySelectorAll('a');
   
-    // Highlight current section
+    // Highlight current section on scroll
     window.addEventListener('scroll', () => {
       let current = 0;
       headings.forEach((heading, index) => {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   
-    // Smooth scroll to the section when clicking TOC link
+    // Smooth scroll when clicking TOC link
     document.querySelectorAll('#toc a').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -42,25 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const target = document.getElementById(targetId);
         if (target) {
           window.scrollTo({
-            top: target.offsetTop - 80, // Adjust for fixed header if needed
+            top: target.offsetTop - 80,
             behavior: 'smooth'
           });
         }
       });
     });
-  
-    // TOC Toggle Button for mobile
-    const tocToggleBtn = document.getElementById('toc-toggle-btn');
-    const tocWrapper = document.getElementById('toc-wrapper');
-  
-    if (tocToggleBtn && tocWrapper) {
-      tocToggleBtn.addEventListener('click', function () {
-        if (tocWrapper.style.display === 'block') {
-          tocWrapper.style.display = 'none';
-        } else {
-          tocWrapper.style.display = 'block';
-        }
-      });
-    }
   });
   

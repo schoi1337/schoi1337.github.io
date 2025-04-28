@@ -172,11 +172,11 @@ code {
   }
 }
 
-/* TOC Wrapper (fixed outside of main.content) */
+/* TOC Wrapper (fixed outside main.content) */
 #toc-wrapper {
   position: fixed;
   top: 160px;
-  left: calc(50% + 400px); /* 768px/2 + 약간의 오른쪽 여백 */
+  left: calc(50% + 400px); /* Adjust depending on main.content width */
   width: 220px;
   max-height: 70vh;
   overflow-y: auto;

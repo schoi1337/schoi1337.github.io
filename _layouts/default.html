@@ -1,19 +1,28 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
   <head>
     {% include head.html %}
   </head>
   <body>
     {% include header.html %}
-       <!-- TOC outside of main.content -->
-       <div id="toc-wrapper">
-        <nav id="toc"></nav>
-      </div>
+
+    {% if page.layout == "post" %}
+    <!-- TOC only for posts -->
+    <div id="toc-wrapper">
+      <nav id="toc"></nav>
+    </div>
+    {% endif %}
+
     <main class="content" role="main">
       {{ content }}
     </main>
+
     {% include footer.html %}
-       <!-- Load TOC JavaScript -->
-       <script src="/assets/js/toc.js"></script>
+
+    {% if page.layout == "post" %}
+    <!-- Load TOC JavaScript only for posts -->
+    <script src="/assets/js/toc.js"></script>
+    {% endif %}
+    
   </body>
 </html>
