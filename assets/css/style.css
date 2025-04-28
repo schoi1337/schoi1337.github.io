@@ -62,11 +62,12 @@ a:hover {
 
 /* Content Section */
 .content {
-  max-width: 960px;
-  margin: 40px auto;
-  padding: 0 20px;
   background-color: #191a1a;
   border-radius: 8px;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 /* Posts Section */
@@ -174,8 +175,8 @@ code {
 /* TOC Wrapper (fixed outside of main.content) */
 #toc-wrapper {
   position: fixed;
-  top: 160px; /* distance from top of viewport */
-  left: calc(50% + 420px); /* 50% + half content width + margin */
+  top: 160px;
+  left: calc(50% + 400px); /* 768px/2 + 약간의 오른쪽 여백 */
   width: 220px;
   max-height: 70vh;
   overflow-y: auto;
