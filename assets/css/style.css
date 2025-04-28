@@ -62,11 +62,12 @@ a:hover {
 
 /* Content Section */
 .content {
-  max-width: 960px;
-  margin: 40px auto;
-  padding: 0 20px;
   background-color: #191a1a;
   border-radius: 8px;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 /* Posts Section */
@@ -168,5 +169,61 @@ code {
 
   .content {
     padding: 0 15px;
+  }
+}
+
+/* TOC Wrapper (fixed outside main.content) */
+#toc-wrapper {
+  position: fixed;
+  top: 160px;
+  left: calc(50% + 400px); /* Adjust depending on main.content width */
+  width: 220px;
+  max-height: 70vh;
+  overflow-y: auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  z-index: 1000;
+}
+
+/* TOC Links */
+#toc a {
+  display: block;
+  padding: 5px 0;
+  color: #888;
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+}
+
+/* Indentation for h3 headings */
+#toc a[data-depth="3"] {
+  padding-left: 15px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Active link styling */
+#toc a.active {
+  color: #eee;
+  font-weight: 600;
+  border-left: 2px solid #eee;
+  padding-left: 13px;
+}
+
+/* Hover effect */
+#toc a:hover {
+  color: #ccc;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile view: hide TOC */
+@media (max-width: 768px) {
+  #toc-wrapper {
+    display: none;
   }
 }
