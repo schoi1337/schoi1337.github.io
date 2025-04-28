@@ -12,35 +12,35 @@ That's why I decided to create a space where I could organize my notes, track my
 
 Through building and maintaining this blog, I ended up learning much more than I initially set out to and found a way to make consistent, small efforts compound into something meaningful.
 
-## Why I Built the Blog
+## Why I Built this Blog
 
 When I first decided to build this blog, my goals were simple:
 
-- To organize and review my **HackTheBox writeups**.
-- To share my **CVE analyses** and **Proof of Concept (PoC)** work.
+- To organize and review my Hack The Box and Proving Grounds Practice writeups.
+- To showcase my open-source projects.
 - To structure and consolidate my technical notes.
 - To have a clear, continuous record of my technical growth.
 
 Rather than relying on a pre-built service, I chose to build everything myself — from the ground up.
 
-I wanted something lightweight, and fully within my control.
+I wanted something lightweight, and fully within my control for customization.
 
 ## Choosing the Platform: GitHub Pages + Jekyll
 
 The platform decision was straightforward.
 
-- **GitHub Pages** for free, stable hosting.
-- **Jekyll** as a simple and efficient static site generator.
+- [GitHub Pages](https://pages.github.com/) for free, stable hosting.
+- [Jekyll](https://jekyllrb.com/) as a simple and efficient static site generator.
 
 I preferred a setup I could completely understand and manage for the long-term sustainability.
 
-## Customizing the Theme: Dark Poole
+## Customizing the Dark Poole Theme 
 
-I started with the **Dark Poole** Jekyll theme and customized it heavily:
+I started with the [Dark Poole Jekyll theme](https://github.com/andrewhwanpark/dark-poole) and customized it heavily:
 
-- Updated typography using [Inter](https://rsms.me/inter/) for body text and [JetBrains Mono](https://www.jetbrains.com/lp/mono/) for code blocks.
+- Updated typography using Inter for body text and JetBrains Mono for code blocks.
 - Refined the color palette for better focus and readability.
-- Adjusted content width for improved desktop experience.
+- Added [Prism.js](https://prismjs.com/) for enhanced syntax highlighting on code blocks.
 - Simplified the navigation and category structure.
 - Refactored the entire code so I can easily make changes if I wanted to.
 - Added a floating Table of Contents (TOC) on the side to improve navigation for longer posts.
@@ -50,17 +50,18 @@ The goal was to build a site that looks minimal but feels intentional — lightw
 > The Original Dark Poole Theme
 ![The Original Dark Poole Theme](/assets/images/Pasted image 20250428152005.png)
 
-> My customized Dark Poole theme
+> My customized Dark Poole theme in the early days
 ![My Customized Dark Poole Theme](/assets/images/image.png)
 
 ## Refactoring the Codebase
 
 While customizing the Dark Poole theme, I realized that cosmetic changes alone weren’t enough.  
+
 To make the blog sustainable and easier to maintain, I decided to refactor the codebase early on.
 
-I focused on modularizing layouts and includes, cleaning up the directory structure, and simplifying the CSS and navigation logic.
+I focused on modularizing `_layouts` and `_includes`, cleaning up the directory structure, and simplifying the CSS and navigation logic.
 
-A more detailed breakdown of this refactoring process can be found [here](/projects/2025/04/28/Refactoring-My-Blog-for-Long-Term-Growth.md).
+A more detailed breakdown of this refactoring process can be found [here](https://schoi1337.github.io/projects/2025/04/28/Refactoring-My-Blog-for-Long-Term-Growth.html).
 
 ## SEO and Visibility
 
@@ -68,22 +69,19 @@ While the blog is primarily for my own learning, making it searchable has additi
 
 - Structured metadata (title, description, Open Graph, Twitter Card tags) for better indexing.
 - A sitemap and robots.txt for search engine crawling.
-- **Google Analytics 4 (GA4)** integration to track how the content is being accessed.
+- Google Analytics 4 (GA4) integration to track how the content is being accessed.
 
 Visibility is part of learning — it encourages clearer communication, invites feedback, and creates new opportunities to collaborate or improve.
 
 ## Automating the Workflow
 
-When I first started, I had over 80 HackTheBox writeups to organize and upload.
-
-Managing them manually would have been slow and error-prone.
+When I first started, I had over 80 HackTheBox writeups to organize and upload. Managing them manually would have been slow and error-prone.
 
 So I created a small automation script that:
 
 - Inserts missing YAML Front Matter.
 - Renames files to the **YYYY-MM-DD-title.md** format.
 - Automatically categorizes posts.
-- Runs git add → commit → push as one flow.
 
 A more detailed breakdown of this automation process will be published in a separate post.
 
@@ -91,9 +89,9 @@ A more detailed breakdown of this automation process will be published in a sepa
 
 Building this blog wasn't just about setting up a website — it became a learning project in itself:
 
-- Gained practical knowledge of **Jekyll** and static site structures.
-- Improved **Git workflow efficiency** for technical content management.
-- Applied **technical SEO** basics to real-world projects.
+- Gained practical knowledge of Jekyll and static site structures.
+- Improved Git workflow efficiency for technical content management.
+- Applied technical SEO basics to real-world projects.
 - Practiced structured, minimalistic technical communication.
 
 Most importantly, it showed me how even small, continuous documentation efforts can create meaningful progress over time.
@@ -104,8 +102,4 @@ This blog is not a finished product.
 
 It will grow and evolve, just like my skills.
 
-- Continuing to upload **HackTheBox writeups**.
-- Publishing **CVE analyses** and **PoC development processes**.
-- Launching and maintaining new **open-source projects**.
-
-Instead of just accumulating certifications or checklists, I'm focusing on building things — and letting those things document my technical journey, one step at a time.
+I'm focusing on building things — and letting those things document my technical journey, one step at a time.
