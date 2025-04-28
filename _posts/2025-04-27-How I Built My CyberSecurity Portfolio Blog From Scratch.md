@@ -63,7 +63,7 @@ To make the blog sustainable and easier to maintain, I decided to refactor the c
 
 I focused on modularizing `_layouts` and `_includes`, cleaning up the directory structure, and simplifying the CSS and navigation logic.
 
-A more detailed breakdown of this refactoring process can be found [here](/2025/04/28/Refactoring-My-Blog-for-Long-Term-Growth.html).
+A more detailed breakdown of this refactoring process can be found [here](/projects/2025/04/28/Refactoring-My-Blog-for-Long-Term-Growth.html).
 
 ## SEO and Visibility
 
