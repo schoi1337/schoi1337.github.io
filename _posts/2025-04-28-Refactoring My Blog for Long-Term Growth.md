@@ -75,6 +75,7 @@ a {
 ```
 
 To improve usability for longer posts, I developed a lightweight Table of Contents (TOC) script.  
+
 The script dynamically parses all `h2` and `h3` headings inside a post, generates anchor links, highlights the active section while scrolling, and enables smooth scrolling with an offset for fixed headers.
 
 >Key part of the TOC script
@@ -129,8 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 ```
 
-Finally, I cleaned up the repository:  
-removing unused includes, organizing assets, and simplifying the file structure to maintain a clean development environment.
+Finally, I cleaned up the repository; removing unused includes, organizing assets, and simplifying the file structure to maintain a clean development environment.
 
 ## Looking Ahead
 
