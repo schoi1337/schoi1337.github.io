@@ -6,12 +6,12 @@ permalink: /About/
 ---
 
 This blog is my personal workspace 🍵 a place where I document what I learn, break, fix, and discover.  
-You’ll find writeups for Hack The Box machines, vulnerability analysis, proofs of concept, and everything in between.
+
+You’ll find writeups for Hack The Box machines, my open-source projects, and everything in between.
 
 My main focus right now is growing as a cyber security specialist, sharpening my practical skills, and building a career with real-world expertise.
 
 Things I believe in:
-- Hands-on experience > Theory
 - Consistency > Intensity
 - Progress > Perfection
 
