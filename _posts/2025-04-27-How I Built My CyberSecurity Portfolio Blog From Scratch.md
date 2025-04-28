@@ -48,9 +48,11 @@ I started with the [Dark Poole Jekyll theme](https://github.com/andrewhwanpark/d
 The goal was to build a site that looks minimal but feels intentional — lightweight without being unfinished.
 
 > The Original Dark Poole Theme
+
 ![The Original Dark Poole Theme](/assets/images/Pasted image 20250428152005.png)
 
 > My customized Dark Poole theme in the early days
+
 ![My Customized Dark Poole Theme](/assets/images/image.png)
 
 ## Refactoring the Codebase
@@ -61,7 +63,7 @@ To make the blog sustainable and easier to maintain, I decided to refactor the c
 
 I focused on modularizing `_layouts` and `_includes`, cleaning up the directory structure, and simplifying the CSS and navigation logic.
 
-A more detailed breakdown of this refactoring process can be found [here](https://schoi1337.github.io/projects/2025/04/28/Refactoring-My-Blog-for-Long-Term-Growth.html).
+A more detailed breakdown of this refactoring process can be found [here](/2025/04/28/Refactoring-My-Blog-for-Long-Term-Growth.html).
 
 ## SEO and Visibility
 
