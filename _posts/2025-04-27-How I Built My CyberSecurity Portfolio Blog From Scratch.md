@@ -82,7 +82,7 @@ When I first started, I had over 80 HackTheBox writeups to organize and upload. 
 So I created a small automation script that:
 
 - Inserts missing YAML Front Matter.
-- Renames files to the **YYYY-MM-DD-title.md** format.
+- Renames files to the `YYYY-MM-DD-title.md` format.
 - Automatically categorizes posts.
 
 A more detailed breakdown of this automation process will be published in a separate post.
