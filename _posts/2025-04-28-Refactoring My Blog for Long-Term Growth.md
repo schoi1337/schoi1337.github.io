@@ -5,7 +5,6 @@ date: 2025-04-28
 categories: PROJECTS
 tags: [Portfolio, Refactoring, Web Optimization, Jekyll, GitHub Pages, Clean Code, Modularization, CSS Optimization, JavaScript, Table of Contents, Frontend, Technical Writing]
 ---
-# Refactoring My Blog for Long-Term Growth
 
 When I first customized the Dark Poole theme for my cybersecurity blog, I quickly realized that small cosmetic changes would not be enough.  
 
@@ -30,6 +29,7 @@ I started by modularizing the core layouts.
 Instead of embedding navigation and metadata directly inside page templates, I moved them into reusable includes.
 
 >Example of a modularized header
+
 ```html
 <!-- _includes/header.html -->
 <header>
@@ -51,6 +51,7 @@ For CSS, I consolidated multiple scattered stylesheets and removed unnecessary S
 Instead of deep Sass nesting and partial imports, I adopted a flatter structure with consistent class naming conventions.
 
 >Example of optimized CSS
+
 ```css
 /* assets/css/style.css */
 body {
@@ -77,6 +78,7 @@ To improve usability for longer posts, I developed a lightweight Table of Conten
 The script dynamically parses all `h2` and `h3` headings inside a post, generates anchor links, highlights the active section while scrolling, and enables smooth scrolling with an offset for fixed headers.
 
 >Key part of the TOC script
+
 ```javascript
 // assets/js/toc.js
 document.addEventListener("DOMContentLoaded", function () {
