@@ -235,3 +235,13 @@ html {
     display: none;
   }
 }
+
+blockquote {
+  border-left: 3px solid #6c757d;
+  padding-left: 1rem;
+  margin: 2rem 0;
+  background: #1e1e1e;
+  color: #cccccc;
+  font-size: 1rem;
+  line-height: 1.8;
+}
