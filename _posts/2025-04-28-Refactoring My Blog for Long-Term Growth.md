@@ -36,11 +36,13 @@ Instead of embedding navigation and metadata directly inside page templates, I m
   <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
   <nav>
     <ul>
-      {% for page in site.pages %}
-        {% if page.nav %}
-          <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-        {% endif %}
-      {% endfor %}
+      {% raw %}
+        {% for page in site.pages %}
+          {% if page.nav %}
+            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% endraw %}
     </ul>
   </nav>
 </header>
