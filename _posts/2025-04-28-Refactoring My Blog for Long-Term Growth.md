@@ -29,7 +29,7 @@ The goals were simple:
 I started by modularizing the core layouts.  
 Instead of embedding navigation and metadata directly inside page templates, I moved them into reusable includes.
 
->Example of a modularized header:
+>Example of a modularized header
 ```html
 <!-- _includes/header.html -->
 <header>
@@ -50,7 +50,7 @@ For CSS, I consolidated multiple scattered stylesheets and removed unnecessary S
 
 Instead of deep Sass nesting and partial imports, I adopted a flatter structure with consistent class naming conventions.
 
->Example of optimized CSS:
+>Example of optimized CSS
 ```css
 /* assets/css/style.css */
 body {
@@ -76,7 +76,7 @@ a {
 To improve usability for longer posts, I developed a lightweight Table of Contents (TOC) script.  
 The script dynamically parses all `h2` and `h3` headings inside a post, generates anchor links, highlights the active section while scrolling, and enables smooth scrolling with an offset for fixed headers.
 
->Key part of the TOC script:
+>Key part of the TOC script
 ```javascript
 // assets/js/toc.js
 document.addEventListener("DOMContentLoaded", function () {
