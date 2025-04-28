@@ -6,7 +6,7 @@ categories: PROJECTS
 tags: [Portfolio, Refactoring, Web Optimization, Jekyll, GitHub Pages, Clean Code, Modularization, CSS Optimization, JavaScript, Table of Contents, Frontend, Technical Writing]
 ---
 
-When I first customized the Dark Poole theme for my cybersecurity blog, I quickly realized that small cosmetic changes would not be enough.  
+When I first customized the [Dark Poole theme](https://github.com/andrewhwanpark/dark-poole) for my cybersecurity blog, I quickly realized that small cosmetic changes would not be enough.  
 
 If I wanted a space that could grow alongside my technical journey — with more posts, categories, and features — the underlying structure needed to be clean and manageable.
 
