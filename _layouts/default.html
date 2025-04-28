@@ -5,6 +5,10 @@
   </head>
   <body>
     {% include header.html %}
+       <!-- TOC outside of main.content -->
+       <div id="toc-wrapper">
+        <nav id="toc"></nav>
+      </div>
     <main class="content" role="main">
       {{ content }}
     </main>
