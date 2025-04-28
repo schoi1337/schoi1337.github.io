@@ -26,7 +26,7 @@ The goals were simple:
 ## Changes Made During Refactoring
 
 I started by modularizing the core layouts.  
-Instead of embedding navigation and metadata directly inside page templates, I moved them into reusable includes.
+Instead of embedding navigation and metadata directly inside page templates, I moved them into reusable `_includes`.
 
 >Example of a modularized header
 
