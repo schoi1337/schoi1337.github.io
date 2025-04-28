@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "How I Build My CyberSecurity Portfolio Blog From Scratch"
-date: 2025-04-28
-categories: "[PROJECTS]"
+date: 2025-04-27
+categories: PROJECTS
 tags: [Cybersecurity Portfolio, Jekyll Blog, GitHub Pages, HackTheBox Writeups, CVE Analysis, Proof of Concept, SEO, Technical Growth]
 ---
 
@@ -47,11 +47,11 @@ I started with the **Dark Poole** Jekyll theme and customized it heavily:
 
 The goal was to build a site that looks minimal but feels intentional — lightweight without being unfinished.
 
-![The Original Dark Poole Theme](/assets/images/Pasted image 20250428152005.png)
 > The Original Dark Poole Theme
+![The Original Dark Poole Theme](/assets/images/Pasted image 20250428152005.png)
 
-![My Customized Dark Poole Theme](/assets/images/image.png)
 > My customized Dark Poole theme
+![My Customized Dark Poole Theme](/assets/images/image.png)
 
 ## Refactoring the Codebase
 
@@ -60,7 +60,7 @@ To make the blog sustainable and easier to maintain, I decided to refactor the c
 
 I focused on modularizing layouts and includes, cleaning up the directory structure, and simplifying the CSS and navigation logic.
 
-A more detailed breakdown of this refactoring process will be published in a separate post.
+A more detailed breakdown of this refactoring process can be found [here](2025/04/28/Refactoring-My-Blog-for-Long-Term-Growth.md).
 
 ## SEO and Visibility
 
