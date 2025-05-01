@@ -8,9 +8,9 @@ tags: ["editorial", "ctf", "penetration testing", "htb", "cybersecurity", "htb w
 OS: Linux
 Difficulty: Easy
 
-# Enumeration
+## Enumeration
 
-## Nmap
+### Nmap
 
 ```sh
 Nmap scan report for 10.10.11.20
@@ -31,14 +31,14 @@ PORT   STATE SERVICE REASON         VERSION
 |_  Supported Methods: GET HEAD POST OPTIONS
 ```
 
-## 80-HTTP
+### 80-HTTP
 
-### Gobuster
+#### Gobuster
 
 ![screenshot](/assets/images/editorial3.png)
 
 
-### Web
+#### Web
 
 ![screenshot](/assets/images/editorial1.png)
 
@@ -46,7 +46,7 @@ http://editorial.htb/upload
 
 ![screenshot](/assets/images/editorial2.png)
 
-# Foothold
+## Foothold
 
 >- `Preview` button on the `/upload` form is vulnerable to SSRF. 
 - Add `http://127.0.0.1/FUZZ` as `bookurl` on the request.
@@ -82,7 +82,7 @@ Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 ```
 
-## Port Fuzzing
+### Port Fuzzing
 
 Right click -> Copy to file -> req.txt
 
@@ -163,18 +163,18 @@ ffuf -u http://editorial.htb/upload-cover -X POST -request req.txt -w ports.txt 
 Username: dev\
 Password: dev080217_devAPI!@
 
-## SSH as dev
+### SSH as dev
 
 ![screenshot](/assets/images/editorial17.png)
 
-# Privilege Escalation
+## Privilege Escalation
 
 >- `/.git` log contains credentials for `prod`.
 - `sudo -l` as prod shows a python script that can be run. 
 - `pip3 list` shows installed python packages and versions.
 - GitPython 3.1.2.9 has a RCE vulnerability. 
 
-## Enumeration
+### Enumeration
 
 ![screenshot](/assets/images/editorial18.png)
 
@@ -192,13 +192,13 @@ Password: dev080217_devAPI!@
 
 > prod :  080217_Producti0n_2023!@ 
 
-## SSH as prod
+### SSH as prod
 
 ![screenshot](/assets/images/editorial24.png)
 
 ![screenshot](/assets/images/editorial25.png)
 
-### clone_prod_change.py
+#### clone_prod_change.py
 
 ![screenshot](/assets/images/editorial26.png)
 

