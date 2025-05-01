@@ -5,42 +5,13 @@ categories: HTB
 tags: ["editorial", "ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-# Editorial
-
-# Editorial
-
-## Summary
-# Credentials
-| Username | Password                 | Hash | Source |
-| -------- | ------------------------ | ---- | ------ |
-| dev      | dev080217_devAPI!@       |      |        |
-| prod     | 080217_Producti0n_2023!@ |      |        |
-|          |                          |      |        |
-# Todo
-- [ ] 
-# Enumeration
--  nginx/1.18.0 (Ubuntu)
-# Initial Access
-- `Preview` button on the `/upload` form is vulnerable to SSRF. 
-- Add `http://127.0.0.1/FUZZ` as `bookurl` on the request.
-- Fuzz ports using ffuf returns port 5000. 
-```sh
-ffuf -u http://editorial.htb/upload-cover -X POST -request req.txt -w ports.txt -fs 61
-```
-- Navigation to the URL in the response downloads a file. 
-	- contains api information
-	- one of them contains credentials
-- SSH as dev.
-# Privilege Escalation
-- `/.git` log contains credentials for `prod`.
-- `sudo -l` as prod shows a python script that can be run. 
-- `pip3 list` shows installed python packages and versions.
-- GitPython 3.1.2.9 has a RCE vulnerability. 
- 
+OS: Linux
+Difficulty: Easy
 
 # Enumeration
+
 ## Nmap
-# TCP
+
 ```sh
 Nmap scan report for 10.10.11.20
 Host is up, received user-set (0.019s latency).
@@ -58,48 +29,43 @@ PORT   STATE SERVICE REASON         VERSION
 |_http-server-header: nginx/1.18.0 (Ubuntu)
 | http-methods: 
 |_  Supported Methods: GET HEAD POST OPTIONS
-Aggressive OS guesses: Linux 5.0 (97%), Linux 4.15 - 5.8 (96%), Linux 5.3 - 5.4 (95%), Linux 2.6.32 (95%), Linux 5.0 - 5.5 (95%), Linux 3.1 (95%), Linux 3.2 (95%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (95%), ASUS RT-N56U WAP (Linux 3.4) (93%), Linux 3.16 (93%)
-No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
-TCP/IP fingerprint:
-OS:SCAN(V=7.94SVN%E=4%D=10/6%OT=22%CT=1%CU=43798%PV=Y%DS=2%DC=T%G=Y%TM=6701
-OS:DE5A%P=x86_64-pc-linux-gnu)SEQ(SP=106%GCD=1%ISR=10D%TI=Z%CI=Z%II=I%TS=A)
-OS:OPS(O1=M53CST11NW7%O2=M53CST11NW7%O3=M53CNNT11NW7%O4=M53CST11NW7%O5=M53C
-OS:ST11NW7%O6=M53CST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)
-OS:ECN(R=Y%DF=Y%T=40%W=FAF0%O=M53CNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%
-OS:F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T
-OS:5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=
-OS:Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF
-OS:=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40
-OS:%CD=S)
 ```
 
 ## 80-HTTP
-# Directory Fuzzing
-## Gobuster
-```sh
-ffuf -c -r -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u "http://FUZZ.editorial.htb/"
 
-gobuster dir -u http://editorial.htb -w /usr/share/wordlists/seclists/Discovery/Web-Content/raft-medium-directories-lowercase.txt -x txt,zip,php -k
-
-ffuf -u http://editorial.htb/upload-cover -X POST -request req.txt -w ports.txt -fs 61
-
-```
+### Gobuster
 
 ![screenshot](/assets/images/editorial3.png)
 
-![screenshot](/assets/images/editorial4.png)
-# Screenshots
+
+### Web
+
 ![screenshot](/assets/images/editorial1.png)
 
 http://editorial.htb/upload
+
 ![screenshot](/assets/images/editorial2.png)
 
+# Foothold
+
+>- `Preview` button on the `/upload` form is vulnerable to SSRF. 
+- Add `http://127.0.0.1/FUZZ` as `bookurl` on the request.
+- Fuzz ports using ffuf returns port 5000. 
+- Navigate to the URL in the response downloads a file. 
+	- contains api information
+	- one of them contains credentials
+- SSH as dev.
+
 `Preview` button is vulnerable to SSRF.
+
 ![screenshot](/assets/images/editorial5.png)
 
 Add `http://127.0.0.1` under bookurl.
+
 Still vulnerable.
+
 ![screenshot](/assets/images/editorial6.png)
+
 Save the header as as `req.txt`
 
 ```
@@ -118,7 +84,8 @@ Connection: keep-alive
 
 ## Port Fuzzing
 
-- Right click -> Copy to file -> req.txt
+Right click -> Copy to file -> req.txt
+
 ![screenshot](/assets/images/editorial9.png)
 
 ```sh
@@ -126,9 +93,8 @@ ffuf -u http://editorial.htb/upload-cover -X POST -request req.txt -w ports.txt 
 ```
 
 ![screenshot](/assets/images/editorial10.png)
-![screenshot](/assets/images/editorial11.png)
 
-![screenshot](/assets/images/editorial12.png)
+![screenshot](/assets/images/editorial11.png)
 
 ```json
 {
@@ -183,7 +149,6 @@ ffuf -u http://editorial.htb/upload-cover -X POST -request req.txt -w ports.txt 
 
 ![screenshot](/assets/images/editorial15.png)
 
-
 ![screenshot](/assets/images/editorial14.png)
 
 ![screenshot](/assets/images/editorial16.png)
@@ -193,17 +158,26 @@ ffuf -u http://editorial.htb/upload-cover -X POST -request req.txt -w ports.txt 
   "template_mail_message": "Welcome to the team! We are thrilled to have you on board and can't wait to see the incredible content you'll bring to the table.\n\nYour login credentials for our internal forum and authors site are:\nUsername: dev\nPassword: dev080217_devAPI!@\nPlease be sure to change your password as soon as possible for security purposes.\n\nDon't hesitate to reach out if you have any questions or ideas - we're always here to support you.\n\nBest regards, Editorial Tiempo Arriba Team."
 }
 ```
-# Foothold
-## Attempts
-### SSH 
-| dev | dev080217_devAPI!@ |
-| --- | ------------------ |
+
+> Your login credentials for our internal forum and authors site are:
+Username: dev\
+Password: dev080217_devAPI!@
+
+## SSH as dev
+
 ![screenshot](/assets/images/editorial17.png)
 
 # Privilege Escalation
+
+>- `/.git` log contains credentials for `prod`.
+- `sudo -l` as prod shows a python script that can be run. 
+- `pip3 list` shows installed python packages and versions.
+- GitPython 3.1.2.9 has a RCE vulnerability. 
+
 ## Enumeration
 
 ![screenshot](/assets/images/editorial18.png)
+
 ![screenshot](/assets/images/editorial22.png)
 
 ```sh
@@ -216,28 +190,22 @@ ffuf -u http://editorial.htb/upload-cover -X POST -request req.txt -w ports.txt 
 'template_mail_message': "Welcome to the team! We are thrilled to have you on board and can't wait to see the incredible content you'll bring to the table.\n\nYour login credentials for our internal forum and authors site are:\nUsername: prod\nPassword: 080217_Producti0n_2023!@\nPlease be sure to change your password as soon as possible for security purposes.\n\nDon't hesitate to reach out if you have any questions or ideas - we're always here to support you.\n\nBest regards, " + api_editorial_name + " Team."
 ```
 
-| prod | 080217_Producti0n_2023!@ |
-| ---- | ------------------------ |
-## LSE
-![screenshot](/assets/images/editorial19.png)
+> prod :  080217_Producti0n_2023!@ 
 
-## SUID3NUM
-![screenshot](/assets/images/editorial20.png)
+## SSH as prod
 
-## Notes
-
-
-## Attempts
 ![screenshot](/assets/images/editorial24.png)
 
 ![screenshot](/assets/images/editorial25.png)
 
 ### clone_prod_change.py
+
 ![screenshot](/assets/images/editorial26.png)
 
 ![screenshot](/assets/images/editorial27.png)
 
 https://github.com/gitpython-developers/GitPython/issues/1515
+
 ![screenshot](/assets/images/editorial28.png)
 
 ```sh
