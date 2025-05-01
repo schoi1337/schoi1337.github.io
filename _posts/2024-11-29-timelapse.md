@@ -5,28 +5,17 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "timelapse", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-# Timelapse
+## Enumeration
 
-# Timelapse
-
-# Credentials
-| Username      | Password                 | Hash | Source               |
-| ------------- | ------------------------ | ---- | -------------------- |
-|               | supremelegacy            |      | winrm_backup.zip     |
-|               | thuglegacy               |      | legacyy_dev_auth.pfx |
-| svc_deploy    | E3R$Q62^12p7PLlC%KWaxuaV |      |                      |
-| Administrator | 55T{8XL047sxk(5Iv}fK3o02 |      |                      |
-# Todo
-- [ ] 
-# Enumeration
-- SMB contains password-protected `winrm_backup.zip` file.
-	-  Crack the file using *zip2john*
-- The output is a pfx file which contains an SSL certificate in `PKCS#12` format and a private key. PFX file can be used by WinRM in order to login without a password. 
+>- SMB contains password-protected `winrm_backup.zip` file.
+	-  Crack the file using zip2john
+- The output is a pfx file which contains an SSL certificate in `PKCS#12` format and a private key.
+- PFX file can be used by WinRM in order to login without a password. 
 	- Use *pfx3john* to convert the `.pfx` into hash format and use *john* to crack the password. 
 	- Extract the SSL certificate and private key from the `.pfx` file.
 
 ## Nmap
-# TCP
+
 ```sh
 Nmap scan report for 10.10.11.152
 Host is up, received user-set (0.018s latency).
@@ -50,74 +39,17 @@ PORT      STATE SERVICE       REASON  VERSION
 |_  http/1.1
 | ssl-cert: Subject: commonName=dc01.timelapse.htb
 | Issuer: commonName=dc01.timelapse.htb
-| Public Key type: rsa
-| Public Key bits: 2048
-| Signature Algorithm: sha256WithRSAEncryption
-| Not valid before: 2021-10-25T14:05:29
-| Not valid after:  2022-10-25T14:25:29
-| MD5:   e233:a199:4504:0859:013f:b9c5:e4f6:91c3
-| SHA-1: 5861:acf7:76b8:703f:d01e:e25d:fc7c:9952:a447:7652
-| -----BEGIN CERTIFICATE-----
-| MIIDCjCCAfKgAwIBAgIQLRY/feXALoZCPZtUeyiC4DANBgkqhkiG9w0BAQsFADAd
-| MRswGQYDVQQDDBJkYzAxLnRpbWVsYXBzZS5odGIwHhcNMjExMDI1MTQwNTI5WhcN
-| MjIxMDI1MTQyNTI5WjAdMRswGQYDVQQDDBJkYzAxLnRpbWVsYXBzZS5odGIwggEi
-| MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDJdoIQMYt47skzf17SI7M8jubO
-| rD6sHg8yZw0YXKumOd5zofcSBPHfC1d/jtcHjGSsc5dQQ66qnlwdlOvifNW/KcaX
-| LqNmzjhwL49UGUw0MAMPAyi1hcYP6LG0dkU84zNuoNMprMpzya3+aU1u7YpQ6Dui
-| AzNKPa+6zJzPSMkg/TlUuSN4LjnSgIV6xKBc1qhVYDEyTUsHZUgkIYtN0+zvwpU5
-| isiwyp9M4RYZbxe0xecW39hfTvec++94VYkH4uO+ITtpmZ5OVvWOCpqagznTSXTg
-| FFuSYQTSjqYDwxPXHTK+/GAlq3uUWQYGdNeVMEZt+8EIEmyL4i4ToPkqjPF1AgMB
-| AAGjRjBEMA4GA1UdDwEB/wQEAwIFoDATBgNVHSUEDDAKBggrBgEFBQcDATAdBgNV
-| HQ4EFgQUZ6PTTN1pEmDFD6YXfQ1tfTnXde0wDQYJKoZIhvcNAQELBQADggEBAL2Y
-| /57FBUBLqUKZKp+P0vtbUAD0+J7bg4m/1tAHcN6Cf89KwRSkRLdq++RWaQk9CKIU
-| 4g3M3stTWCnMf1CgXax+WeuTpzGmITLeVA6L8I2FaIgNdFVQGIG1nAn1UpYueR/H
-| NTIVjMPA93XR1JLsW601WV6eUI/q7t6e52sAADECjsnG1p37NjNbmTwHabrUVjBK
-| 6Luol+v2QtqP6nY4DRH+XSk6xDaxjfwd5qN7DvSpdoz09+2ffrFuQkxxs6Pp8bQE
-| 5GJ+aSfE+xua2vpYyyGxO0Or1J2YA1CXMijise2tp+m9JBQ1wJ2suUS2wGv1Tvyh
-| lrrndm32+d0YeP/wb8E=
-|_-----END CERTIFICATE-----
-|_http-server-header: Microsoft-HTTPAPI/2.0
-|_http-title: Not Found
+...
 9389/tcp  open  mc-nmf        syn-ack .NET Message Framing
 49667/tcp open  msrpc         syn-ack Microsoft Windows RPC
 49673/tcp open  ncacn_http    syn-ack Microsoft Windows RPC over HTTP 1.0
 49674/tcp open  msrpc         syn-ack Microsoft Windows RPC
 49695/tcp open  msrpc         syn-ack Microsoft Windows RPC
 Service Info: Host: DC01; OS: Windows; CPE: cpe:/o:microsoft:windows
-
 ```
 
-# UDP
-```sh
-PORT      STATE         SERVICE      VERSION
-53/udp    open          domain       Simple DNS Plus
-67/udp    open|filtered dhcps
-68/udp    open|filtered dhcpc
-69/udp    open|filtered tftp
-123/udp   open          ntp          NTP v3
-135/udp   open|filtered msrpc
-137/udp   open|filtered netbios-ns
-138/udp   open|filtered netbios-dgm
-139/udp   open|filtered netbios-ssn
-161/udp   open|filtered snmp
-162/udp   open|filtered snmptrap
-445/udp   open|filtered microsoft-ds
-500/udp   open|filtered isakmp
-514/udp   open|filtered syslog
-520/udp   open|filtered route
-631/udp   open|filtered ipp
-1434/udp  open|filtered ms-sql-m
-1900/udp  open|filtered upnp
-4500/udp  open|filtered nat-t-ike
-49152/udp open|filtered unknown
-Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
-```
+### SMB
 
-## SMB
-## Notes
-
-
-## Attempts
 ![screenshot](/assets/images/timelapse1.png)
 
 ```json
@@ -157,7 +89,8 @@ Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 }
 ```
 
-## winrm_backup.zip
+#### winrm_backup.zip
+
 ![screenshot](/assets/images/timelapse2.png)
 
 ```sh
@@ -166,7 +99,9 @@ john -w=/usr/share/wordlists/rockyou.txt hash
 ```
 
 ![screenshot](/assets/images/timelapse3.png)
-### legacyy_dev_auth.pfx
+
+#### legacyy_dev_auth.pfx
+
 ![screenshot](/assets/images/timelapse4.png)
 
 The output is a PFX file which contains an SSL certificate in PKCS#12 format and a private key. PFX files can be used by WinRM in order to login without a password. Let's extract them from the file.
