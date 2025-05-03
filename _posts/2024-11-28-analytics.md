@@ -47,9 +47,7 @@ Source code
 
 ## Initial Access
 
-> Public exploit found on metabase gives initial access
-
-https://github.com/m3m0o/metabase-pre-auth-rce-poc
+> [Public exploit](https://github.com/m3m0o/metabase-pre-auth-rce-poc) found on metabase gives initial access
 
 ```text
 setup-token : 249fa03d-fd94-4d5b-b94f-b4ebf3df681f
@@ -85,7 +83,7 @@ ssh as metalytics
 
 ![screenshot](/assets/images/analytics13.png)
 
-https://github.com/g1vi/CVE-2023-2640-CVE-2023-32629
+Using a [public exploit](https://github.com/g1vi/CVE-2023-2640-CVE-2023-32629) to escalate privilge.
 
 ![screenshot](/assets/images/analytics14.png)
 
