@@ -52,6 +52,10 @@ Service Info: Host: DC01; OS: Windows; CPE: cpe:/o:microsoft:windows
 
 ![screenshot](/assets/images/timelapse1.png)
 
+```sh
+nxc smb 10.10.11.152 -u 'guest' -p '' -M spider_plus
+```
+
 ```json
 {
     "Shares": {
