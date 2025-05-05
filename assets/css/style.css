@@ -147,6 +147,9 @@ pre[class*="language-"] {
   font-family: 'JetBrains Mono', monospace !important;
   font-size: 0.875em !important;
   line-height: 1.6;
+  overflow-x: auto;         
+  white-space: pre;        
+  word-break: normal;
 }
 
 /* Inline code */
