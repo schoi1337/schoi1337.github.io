@@ -5,21 +5,16 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "linkvortex", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-# Linkvortex
+## Enumeration
 
-# Credentials
-| Username | Password | Hash | Source |
-| -------- | -------- | ---- | ------ |
-|          |          |      |        |
-# Notes
-
-
-# Enumeration
-- Fuzzing subdomain gave `dev.linkvortex.htb`
+>- Fuzzing subdomain gave `dev.linkvortex.htb`
 - `git diff --staged` provides credentials.
 - Logging into the admin panel with the credentials shows the version number
 
-# Directory Fuzzing
+### 80-HTTP
+
+#### Directory Fuzzing
+
 ```text
 http://linkvortex.htb/ghost/assets/
 http://linkvortex.htb/assets/
@@ -29,30 +24,36 @@ ffuf -u http://linkvortex.htb -H "Host: FUZZ.linkvortex.htb" -w /usr/share/wordl
 ```
 
 ![[Pasted image 20250117125044.png]]
-# Screenshots
+
+#### Web
 
 http://dev.linkvortex.htb
+
 ![[Pasted image 20250117124820.png]]
 
 http://linkvortex.htb/ghost/assets/
+
 ![[Pasted image 20250117124508.png]]
+
 http://linkvortex.htb/assets/
+
 ![[Pasted image 20250117124548.png]]
 
 ![[Pasted image 20250117123835.png]]
 
-# Git
+### Git
+
 ```sh
 git-dumper http://dev.linkvortex.htb/.git ~/LinkVortex/git
 ```
 
 ![[Pasted image 20250117125449.png]]
+
 ```text
 0000000000000000000000000000000000000000 299cdb4387763f850887275a716153e84793077d root <dev@linkvortex.htb> 1730322603 +0000	clone: from https://github.com/TryGhost/Ghost.git
 ```
 
 ![[Pasted image 20250117134405.png]]
-
 
 ![[Pasted image 20250117134450.png]]
 

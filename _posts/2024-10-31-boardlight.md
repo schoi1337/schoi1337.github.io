@@ -5,34 +5,17 @@ categories: HTB
 tags: ["ctf", "boardlight", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-# Boardlight
-
-# Boardlight
-
-## Summary
-# Credentials
+## Credentials
 | Username      | Password          | Hash | Source           |
 | ------------- | ----------------- | ---- | ---------------- |
 | dolibarrowner | serverfun2$2023!! |      | dolibarr main db |
-|               |                   |      |                  |
-|               |                   |      |                  |
-# Todo
-- [x] brute force subdomains
-# Notes
-- Dolibarr 17.0.0
-# Enumeration
-- Brute forcing subdomains reveals crm.board.htb which is running Dolibarr 17.0.0.
-# Initial Access
-- public exploit to gain initial access as www-data
-# Lateral Movement
-- Dolibarr config contains credentials for dolibarr main db. 
-- Password reuse to sign in as larissa.
-# Privilege Escalation
-- Linpeas and SUID3NUM reveals that custom SUID is set for enlightenment. 
-- Public exploit to gain access as root.
 
-# Nmap
-# TCP
+## Enumeration
+
+>  Brute forcing subdomains reveals crm.board.htb which is running Dolibarr 17.0.0.
+
+### Nmap
+
 ```sh
 PORT   STATE SERVICE REASON         VERSION
 22/tcp open  ssh     syn-ack ttl 63 OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)
@@ -60,33 +43,10 @@ OS:G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
 
 ```
 
-# UDP
-```sh
-PORT      STATE         SERVICE      VERSION
-53/udp    closed        domain
-67/udp    closed        dhcps
-68/udp    open|filtered dhcpc
-69/udp    closed        tftp
-123/udp   closed        ntp
-135/udp   closed        msrpc
-137/udp   closed        netbios-ns
-138/udp   closed        netbios-dgm
-139/udp   closed        netbios-ssn
-161/udp   closed        snmp
-162/udp   closed        snmptrap
-445/udp   closed        microsoft-ds
-500/udp   closed        isakmp
-514/udp   closed        syslog
-520/udp   closed        route
-631/udp   closed        ipp
-1434/udp  closed        ms-sql-m
-1900/udp  closed        upnp
-4500/udp  closed        nat-t-ike
-49152/udp closed        unknown
-```
-# 80
-# Directory Fuzzing
-## Gobuster
+### 80-HTTP
+
+#### Gobuster
+
 ```sh
 http://board.htb/images/
 http://board.htb/js/
@@ -104,38 +64,56 @@ ffuf -u http://10.10.11.11 -H "Host: FUZZ.board.htb" -w /usr/share/wordlists/sec
 
 ![screenshot](/assets/images/boardlight7.png)
 
+#### Web
 
-
-
-
-
-# Screenshots
 ![screenshot](/assets/images/boardlight1.png)
+
 http://10.10.11.11/contact.php
+
 ![screenshot](/assets/images/boardlight2.png)
-## LFI
+
+## Initial Access
+
+> public exploit to gain initial access as www-data
+
+### LFI
+
 ![screenshot](/assets/images/boardlight4.png)
+
 ![screenshot](/assets/images/boardlight5.png)
 
-# crm.board.htb
+### crm.board.htb
+
 Dolibarr 17.0.0
+
 ![screenshot](/assets/images/boardlight8.png)
 
 `admin : admin`
 
 ![screenshot](/assets/images/boardlight9.png)
 
-# Foothold
-## Attempts
 https://github.com/nikn0laty/Exploit-for-Dolibarr-17.0.0-CVE-2023-30253
 
-![screenshot](/assets/images/boardlight10.png)![screenshot](/assets/images/boardlight11.png)
+![screenshot](/assets/images/boardlight10.png)
 
-# Privilege Escalation
-## Enumeration
+![screenshot](/assets/images/boardlight11.png)
+
+### Lateral Movement
+
+>- Dolibarr config contains credentials for dolibarr main db. 
+- Password reuse to sign in as larissa.
+
+## Privilege Escalation
+
+>- Linpeas and SUID3NUM reveals that custom SUID is set for enlightenment. 
+- Public exploit to gain access as root.
+
 ### LSE
+
 ![screenshot](/assets/images/boardlight12.png)
+
 ### Linpeas
+
 ![screenshot](/assets/images/boardlight13.png)
 
 ![screenshot](/assets/images/boardlight14.png)
@@ -149,6 +127,7 @@ https://github.com/nikn0laty/Exploit-for-Dolibarr-17.0.0-CVE-2023-30253
 ![screenshot](/assets/images/boardlight18.png)
 
 ### SUID3NUM
+
 ![screenshot](/assets/images/boardlight19.png)
 
 The Dolibarr configuration file [is located at](https://wiki.dolibarr.org/index.php?title=Configuration_file) `/var/www/html/crm.board.htb/htdocs/conf/conf.php`:
@@ -160,7 +139,9 @@ dolibarrowner | serverfun2$2023!!
 ```
 
 ![screenshot](/assets/images/boardlight21.png)
-# Larissa
+
+### Larissa
+
 https://github.com/MaherAzzouzi/CVE-2022-37706-LPE-exploit/blob/main/exploit.sh
 
 ![screenshot](/assets/images/boardlight22.png)

