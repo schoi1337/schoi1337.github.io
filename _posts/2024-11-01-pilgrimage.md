@@ -5,11 +5,6 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "pilgrimage", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-## Credentials
-| Username | Password         | Hash | Source |
-| -------- | ---------------- | ---- | ------ |
-| emily    | abigchonkyboi123 |      |        |
-
 ## Enumeration
 
 >- Brute-forcing directories found `.git`
@@ -18,7 +13,7 @@ tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "pil
 	- `./magick --version` gives version number and details about the binary.
 		- Using the public exploit, `/etc/passwd` is obtained.
 	- In `index.php` sqlite database path is shown. Using the same exploit, database is obtained.
-		- User emily credentails are obtained from the database using sqlite.
+		- User emily credentials are obtained from the database using sqlite.
 
 ### Nmap
 
@@ -38,13 +33,15 @@ bulletproof 4.0
 
 ![screenshot](/assets/images/pilgrimage7.png)
 
-In `index.php`, when uploading an image it uses `magick` binary to covert an image, shrink its size, and save to `/var/www/pilgrimage.htb/shrunk/`.
+Upon examining `index.php`, I identified that the image upload functionality utilizes the `magick` binary to process incoming images. 
+
+This utility handles the conversion operation, reduces the image size, and stores the resulting compressed files in the `/var/www/pilgrimage.htb/shrunk/` directory.
 
 ![screenshot](/assets/images/pilgrimage9.png)
 
 - ImageMagick 7.1.0-49 beta
 
-https://github.com/kljunowsky/CVE-2022-44268
+[Public exploit used](https://github.com/kljunowsky/CVE-2022-44268)
 
 `/etc/passwd`
 
@@ -70,24 +67,20 @@ identify -verbose 66807ecc5142b.png | grep -Pn "^( |Image)" | xxd -r -p > pilgri
 
 ![screenshot](/assets/images/pilgrimage14.png)
 
+Obtained credential.
+
 ## Initial Access
 
 > SSH as emily with obtained credential.
-
-ssh as emily with the obtained credentials
 
 ![screenshot](/assets/images/pilgrimage15.png)
 
 ## Privilege Escalation 
 
->- Linpeas output shows interesting file `malwarescan.sh`
-	- the script uses binwalk.
+> - Linpeas output shows interesting file `malwarescan.sh`
+	- this script uses binwalk.
 	- `binwalk` shows version details
 		- Using the public exploit, root shell is obtained.
-
-![screenshot](/assets/images/pilgrimage16.png)
-
-![screenshot](/assets/images/pilgrimage17.png)
 
 ![screenshot](/assets/images/pilgrimage18.png)
 
@@ -104,7 +97,7 @@ ps auxww | grep root
 
 ![screenshot](/assets/images/pilgrimage21.png)
 
-https://www.exploit-db.com/exploits/51249
+[Public exploit used](https://www.exploit-db.com/exploits/51249)
 
 ![screenshot](/assets/images/pilgrimage22.png)
 
