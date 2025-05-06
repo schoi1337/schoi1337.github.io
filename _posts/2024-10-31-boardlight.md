@@ -83,7 +83,7 @@ Dolibarr 17.0.0
 
 ![screenshot](/assets/images/boardlight8.png)
 
-Tring `admin : admin` as credentials worked. 
+Trying `admin : admin` as credentials worked. 
 
 ![screenshot](/assets/images/boardlight9.png)
 
@@ -97,14 +97,6 @@ Tring `admin : admin` as credentials worked.
 
 >- Dolibarr config contains credentials for dolibarr main db. 
 - Password reuse to sign in as larissa.
-
-### LSE
-
-![screenshot](/assets/images/boardlight12.png)
-
-### SUID3NUM
-
-![screenshot](/assets/images/boardlight19.png)
 
 According to [this](https://wiki.dolibarr.org/index.php?title=Configuration_file), the Dolibarr configuration file is located at `/var/www/html/crm.board.htb/htdocs/conf/conf.php`.
 
@@ -124,6 +116,14 @@ dolibarrowner | serverfun2$2023!!
 
 >- Linpeas and SUID3NUM reveals that custom SUID is set for `enlightenment`. 
 - Public exploit to gain access as root.
+
+### LSE
+
+![screenshot](/assets/images/boardlight12.png)
+
+### SUID3NUM
+
+![screenshot](/assets/images/boardlight19.png)
 
 [Public exploit used](https://github.com/MaherAzzouzi/CVE-2022-37706-LPE-exploit/blob/main/exploit.sh)
 
