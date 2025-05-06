@@ -99,7 +99,7 @@ Tring `admin : admin` as credentials worked.
 
 ![screenshot](/assets/images/boardlight11.png)
 
-### Lateral Movement
+## Lateral Movement
 
 >- Dolibarr config contains credentials for dolibarr main db. 
 - Password reuse to sign in as larissa.
