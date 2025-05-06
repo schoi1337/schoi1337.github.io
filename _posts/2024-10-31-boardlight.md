@@ -6,6 +6,7 @@ tags: ["ctf", "boardlight", "penetration testing", "htb", "cybersecurity", "htb 
 ---
 
 ## Credentials
+
 | Username      | Password          | Hash | Source           |
 | ------------- | ----------------- | ---- | ---------------- |
 | dolibarrowner | serverfun2$2023!! |      | dolibarr main db |
@@ -92,7 +93,7 @@ Dolibarr 17.0.0
 
 ![screenshot](/assets/images/boardlight9.png)
 
-https://github.com/nikn0laty/Exploit-for-Dolibarr-17.0.0-CVE-2023-30253
+[Public exploit used](https://github.com/nikn0laty/Exploit-for-Dolibarr-17.0.0-CVE-2023-30253)
 
 ![screenshot](/assets/images/boardlight10.png)
 
@@ -142,6 +143,6 @@ dolibarrowner | serverfun2$2023!!
 
 ### Larissa
 
-https://github.com/MaherAzzouzi/CVE-2022-37706-LPE-exploit/blob/main/exploit.sh
+[Public exploit used] (https://github.com/MaherAzzouzi/CVE-2022-37706-LPE-exploit/blob/main/exploit.sh)
 
 ![screenshot](/assets/images/boardlight22.png)
