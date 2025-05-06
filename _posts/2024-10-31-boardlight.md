@@ -5,12 +5,6 @@ categories: HTB
 tags: ["ctf", "boardlight", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-## Credentials
-
-| Username      | Password          | Hash | Source           |
-| ------------- | ----------------- | ---- | ---------------- |
-| dolibarrowner | serverfun2$2023!! |      | dolibarr main db |
-
 ## Enumeration
 
 >  Brute forcing subdomains reveals crm.board.htb which is running Dolibarr 17.0.0.
