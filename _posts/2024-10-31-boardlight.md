@@ -77,7 +77,7 @@ http://10.10.11.11/contact.php
 
 > public exploit to gain initial access as www-data
 
-### LFI
+### Test for LFI
 
 ![screenshot](/assets/images/boardlight4.png)
 
@@ -89,7 +89,7 @@ Dolibarr 17.0.0
 
 ![screenshot](/assets/images/boardlight8.png)
 
-`admin : admin`
+Tring `admin : admin` as credentials worked. 
 
 ![screenshot](/assets/images/boardlight9.png)
 
@@ -104,45 +104,33 @@ Dolibarr 17.0.0
 >- Dolibarr config contains credentials for dolibarr main db. 
 - Password reuse to sign in as larissa.
 
-## Privilege Escalation
-
->- Linpeas and SUID3NUM reveals that custom SUID is set for enlightenment. 
-- Public exploit to gain access as root.
-
 ### LSE
 
 ![screenshot](/assets/images/boardlight12.png)
-
-### Linpeas
-
-![screenshot](/assets/images/boardlight13.png)
-
-![screenshot](/assets/images/boardlight14.png)
-
-![screenshot](/assets/images/boardlight15.png)
-
-![screenshot](/assets/images/boardlight16.png)
-
-![screenshot](/assets/images/boardlight17.png)
-
-![screenshot](/assets/images/boardlight18.png)
 
 ### SUID3NUM
 
 ![screenshot](/assets/images/boardlight19.png)
 
-The Dolibarr configuration file [is located at](https://wiki.dolibarr.org/index.php?title=Configuration_file) `/var/www/html/crm.board.htb/htdocs/conf/conf.php`:
+According to [this](https://wiki.dolibarr.org/index.php?title=Configuration_file), the Dolibarr configuration file is located at `/var/www/html/crm.board.htb/htdocs/conf/conf.php`.
 
 ![screenshot](/assets/images/boardlight20.png)
+
+Obtained credentials.
 
 ```text
 dolibarrowner | serverfun2$2023!! 
 ```
 
+`su` as larissa using the password obtained. 
+
 ![screenshot](/assets/images/boardlight21.png)
 
-### Larissa
+## Privilege Escalation
 
-[Public exploit used] (https://github.com/MaherAzzouzi/CVE-2022-37706-LPE-exploit/blob/main/exploit.sh)
+>- Linpeas and SUID3NUM reveals that custom SUID is set for `enlightenment`. 
+- Public exploit to gain access as root.
+
+[Public exploit used](https://github.com/MaherAzzouzi/CVE-2022-37706-LPE-exploit/blob/main/exploit.sh)
 
 ![screenshot](/assets/images/boardlight22.png)
