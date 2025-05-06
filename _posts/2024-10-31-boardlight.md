@@ -114,7 +114,7 @@ dolibarrowner | serverfun2$2023!!
 
 ## Privilege Escalation
 
->- Linpeas and SUID3NUM reveals that custom SUID is set for `enlightenment`. 
+>- LSE and SUID3NUM reveals that custom SUID is set for `enlightenment`. 
 - Public exploit to gain access as root.
 
 ### LSE
