@@ -5,6 +5,13 @@ categories: HTB
 tags: ["editorial", "ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+This post details the exploitation of the Editorial machine on Hack The Box, a Linux-based target that mimics a custom CMS workflow with several chained vulnerabilities.
+
+Key techniques explored include:
+- Bypassing weak authentication via logic flaws
+- Uploading and triggering malicious templates for code execution
+- Enumerating user-owned scripts for post-exploitation privilege escalation
+
 OS: Linux
 Difficulty: Easy
 

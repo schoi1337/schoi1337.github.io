@@ -5,6 +5,13 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "cozyhosting", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+This write-up walks through the compromise of the Cozyhosting machine on Hack The Box. The target simulates a hosted web platform with misconfigured admin interfaces and insecure deployment practices.
+
+Key techniques explored include:
+- Locating hidden development endpoints via manual URL fuzzing
+- Exploiting insecure file inclusion and weak configuration handling
+- Performing privilege escalation through writable CRON job paths
+
 OS: Linux
 Difficulty : Easy
 
