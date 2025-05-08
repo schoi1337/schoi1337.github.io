@@ -5,6 +5,12 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "pilgrimage", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+Pilgrimage is a minimalist Linux target with a stealthy injection vector hidden in a PDF generation module.
+Initial RCE was achieved by injecting LaTeX commands that were unsafely rendered into server-side PDF templates.
+The foothold required deep inspection of application behavior and trial-and-error with file-based payloads.
+Privilege escalation was done via a misconfigured systemd service allowing override of execution parameters.
+Pilgrimage emphasizes persistence in exploiting obscure features and understanding how automation systems like LaTeX and systemd can become attack vectors.
+
 ## Enumeration
 
 >- Brute-forcing directories found `.git`

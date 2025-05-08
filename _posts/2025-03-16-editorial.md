@@ -5,14 +5,14 @@ categories: HTB
 tags: ["editorial", "ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-This post details the exploitation of the Editorial machine on Hack The Box, a Linux-based target that mimics a custom CMS workflow with several chained vulnerabilities.
-
-Key techniques explored include:
-- Bypassing weak authentication via logic flaws
-- Uploading and triggering malicious templates for code execution
-- Enumerating user-owned scripts for post-exploitation privilege escalation
+Editorial features a modern CMS hosting platform that suffered from exposed Git history and environment leaks.
+The initial foothold was gained by reconstructing deleted files and recovering admin credentials.
+Post-login access to file management modules allowed reverse shell deployment.
+Privilege escalation involved abusing capabilities set on a backup binary, combined with log file poisoning.
+Editorial shows how developers’ habits — like pushing secrets or leaving deployment artifacts — can undermine even hardened apps.
 
 OS: Linux
+
 Difficulty: Easy
 
 ## Enumeration

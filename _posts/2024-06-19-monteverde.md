@@ -5,15 +5,15 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "monteverde", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+Monteverde simulates a corporate Active Directory with AzureAD synchronization artifacts and group misconfigurations.
+After enumerating LDAP and SMB, credentials were recovered from shared files and used to authenticate against WinRM.
+Privilege escalation was done through a service account with overly permissive rights tied to Azure sync operations.
+The box required chaining multiple authentication vectors and using enumeration tools like BloodHound to map relationships.
+Monteverde illustrates how hybrid cloud setups can introduce complex trust paths — and how attackers exploit them.
+
 OS: Windows(AD)
+
 Difficulty: Medium
-
-## Credentials
-
-```text
-SABatchJobs : SABatchJobs
-mhope : 4n0therD4y@n0th3r$
-```
 
 ## Enumeration
 

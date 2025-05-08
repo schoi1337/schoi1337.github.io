@@ -5,6 +5,14 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "linkvortex", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+This machine simulates a web server vulnerable to blind command injection through an obfuscated input vector. 
+
+Initial access was achieved by chaining subtle response behavior in a URL parameter to identify a command injection sink. With no immediate output, I used time-based payloads to confirm execution. 
+
+The box highlights the importance of error-handling observations and persistence in exploiting seemingly silent vectors. 
+
+Privilege escalation involved misconfigured SUID binaries with unexpected capabilities — a good example of pivoting from web to local enumeration.
+
 ## Enumeration
 
 >- Fuzzing subdomain gave `dev.linkvortex.htb`

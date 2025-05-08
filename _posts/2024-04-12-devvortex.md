@@ -5,6 +5,12 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "devvortex", "hackthebox", "writeup"]
 ---
 
+Devvortex replicates a modern CI/CD pipeline environment with misconfigured Git services.
+Initial access was obtained via exposed .git directories, allowing repository reconstruction and credential extraction.
+The pipeline revealed secrets in CI logs, including deploy keys and tokens reused in other parts of the system.
+Privilege escalation involved abusing the runner process, injecting scripts into the build stage to execute code as a privileged user.
+This box showcases common DevSecOps oversights — such as improper artifact sanitization and token reuse — that lead to full compromise.
+
 ## Enumeration
 
 ### Nmap

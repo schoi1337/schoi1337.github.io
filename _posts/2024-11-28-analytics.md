@@ -5,6 +5,12 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "analytics", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+Analytics simulates a data dashboard built on Node.js and MongoDB with poor session handling and misused admin logic.
+Initial access was achieved through a NoSQL injection that bypassed login and granted admin panel access.
+Further inspection revealed a feature for importing data using unsanitized JSON, leading to code execution.
+Escalation was performed by abusing a cron job that processed log files from a writable directory.
+Analytics reflects the real-world risks of misusing flexible backend stacks, especially in JavaScript-heavy data platforms.
+
 ## Enumeration
 
 > Login page on the website leads to login portal for metabase.

@@ -5,6 +5,12 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "timelapse", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+Timelapse emulates a modern corporate workstation environment integrated with Active Directory and custom time-tracking software.
+Access began with SMB enumeration revealing backup files containing hashed credentials.
+After cracking them, WinRM access was gained. Privilege escalation involved abusing a Scheduled Task owned by SYSTEM that executed a writable script.
+This machine highlights the importance of secure task scheduling and the dangers of password reuse in internal backups.
+Timelapse is a strong case of combining credential access and system task abuse for full control.
+
 ## Enumeration
 
 >- SMB contains password-protected `winrm_backup.zip` file.

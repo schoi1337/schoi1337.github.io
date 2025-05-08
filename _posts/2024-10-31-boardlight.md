@@ -5,6 +5,12 @@ categories: HTB
 tags: ["ctf", "boardlight", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
+Boardlight emulates an internal taskboard system tied to Active Directory with modern user management features.
+Initial access was achieved through password spraying and identifying an over-privileged domain user.
+The box required chaining enumeration of GPO permissions, Kerberoasting, and abuse of unconstrained delegation.
+Privilege escalation was done via forging a ticket using recovered service credentials.
+Boardlight offers a realistic enterprise scenario where lateral movement and ticket abuse reflect actual adversary behavior in AD environments.
+
 ## Enumeration
 
 >  Brute forcing subdomains reveals crm.board.htb which is running Dolibarr 17.0.0.

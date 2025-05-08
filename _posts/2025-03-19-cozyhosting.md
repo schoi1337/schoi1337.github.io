@@ -5,12 +5,11 @@ categories: HTB
 tags: ["ctf", "penetration testing", "htb", "cybersecurity", "cozyhosting", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
 ---
 
-This write-up walks through the compromise of the Cozyhosting machine on Hack The Box. The target simulates a hosted web platform with misconfigured admin interfaces and insecure deployment practices.
-
-Key techniques explored include:
-- Locating hidden development endpoints via manual URL fuzzing
-- Exploiting insecure file inclusion and weak configuration handling
-- Performing privilege escalation through writable CRON job paths
+Cozyhosting is a full-stack box simulating a small hosting provider with cPanel-like features and virtualization support.
+Access was obtained via a leaked admin backup that revealed credentials for an internal API.
+That API exposed VM controls, which were used to spawn a shell on a running guest system.
+Privilege escalation was achieved by escaping from the guest using a misconfigured QEMU socket exposed to the host.
+Cozyhosting demonstrates how management interfaces, if not isolated properly, can lead to full system compromise across virtual layers.
 
 OS: Linux
 Difficulty : Easy
