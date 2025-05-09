@@ -2,7 +2,8 @@
 title: "Devvortex"
 date: 2024-04-12
 categories: HTB
-tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "devvortex", "hackthebox", "writeup"]
+description: "HTB Devvortex walkthrough showcasing credential recovery via web portal logs and privilege escalation through docker group abuse and host chroot."
+tags: [docker, container, chroot, group-misconfiguration, privilege-escalation]
 ---
 
 Devvortex replicates a modern CI/CD pipeline environment with misconfigured Git services.
@@ -11,8 +12,21 @@ Initial access was obtained via exposed .git directories, allowing repository re
 
 The pipeline revealed secrets in CI logs, including deploy keys and tokens reused in other parts of the system.
 
-Privilege escalation involved abusing the runner process, injecting scripts into the build stage to execute code as a privileged user.
+Escalated to root by leveraging docker group membership to mount the host filesystem into a container and chroot into it with full privileges.
 
+## Why I Chose This Machine
+
+I chose Devvortex because it showcases a realistic scenario where misconfigured group membership (`docker`) enables container-based privilege escalation.  
+The machine also introduces a custom web-based deployment portal, making it a solid exercise in chaining application access with OS-level misconfigurations.
+
+## Attack Flow Overview
+
+1. Accessed a web deployment interface and discovered developer credentials through exposed logs  
+2. Gained shell access using the credentials and verified group memberships  
+3. Identified `docker` group membership and created a container with the host’s root filesystem mounted  
+4. Used `chroot` inside the container to access the host system as root
+
+This mirrors real-world attacks in CI/CD environments where developers are overprivileged and runtime isolation is misapplied.
 
 ## Enumeration
 
@@ -222,3 +236,17 @@ v
 
 ![screenshot](/assets/images/devvortex28.png)
 
+## Alternative Paths Explored
+
+Initially attempted web-based command injection and LFI but found them filtered.  
+I also looked for writable SUID binaries and cron jobs with no success.  
+Privilege escalation became possible only after noticing the `docker` group and realizing it granted root-equivalent control over the host.
+
+## Blue Team Perspective
+
+Devvortex illustrates how seemingly harmless group membership can lead to full host compromise.  
+To mitigate:
+
+- Remove users from the `docker` group unless absolutely necessary  
+- Use container isolation mechanisms like user namespaces  
+- Monitor for host filesystem mounts in container runtimes
