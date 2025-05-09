@@ -23,3 +23,4 @@ If you're curious about my notes, want to discuss ideas, or just want to say hi,
 
 [Hack the Box](https://app.hackthebox.com/profile/74001)
 
+I'm also sharing insights and projects on [X (Twitter)](https://x.com/schoi1337)
