@@ -6,14 +6,29 @@ tags: ["editorial", "ctf", "penetration testing", "htb", "cybersecurity", "htb w
 ---
 
 Editorial features a modern CMS hosting platform that suffered from exposed Git history and environment leaks.
+
 The initial foothold was gained by reconstructing deleted files and recovering admin credentials.
+
 Post-login access to file management modules allowed reverse shell deployment.
+
 Privilege escalation involved abusing capabilities set on a backup binary, combined with log file poisoning.
 Editorial shows how developers’ habits — like pushing secrets or leaving deployment artifacts — can undermine even hardened apps.
 
-OS: Linux
+I initially selected Editorial because of its web-based structure and focus on developer mistakes — particularly around Git exposure and backup script hygiene.  
 
-Difficulty: Easy
+As I worked through the box, it revealed a full attack chain that mirrors common CI/CD security issues: from source leak to privileged script abuse.  
+
+That made it a highly relevant scenario to practice both source-level recon and privilege escalation via misused automation.
+
+## Attack Flow Overview
+
+1. Recovered deleted `.git` files and source code  
+2. Extracted admin credentials from `config.php` and logged into the CMS  
+3. Uploaded a reverse shell via the file manager  
+4. Switched to `scriptmanager` using credentials found locally  
+5. Escalated to root by abusing `sudo` permissions on a backup script vulnerable to command injection
+
+The attack mimics a real-world scenario where insecure dev practices and misconfigured privilege boundaries result in total compromise.
 
 ## Enumeration
 
@@ -220,3 +235,20 @@ sudo /usr/bin/python3 /opt/internal_apps/clone_changes/clone_prod_change.py 'ext
 ```
 
 ![screenshot](/assets/images/editorial29.png)
+
+## Alternative Paths Explored
+
+I initially tried to bypass login through SQL injection and upload a webshell directly to `/uploads`, but these were blocked.  
+
+Exploring scheduled tasks and SUID binaries didn’t yield results either.  
+
+Only after reconstructing the Git repo and reviewing the code did I uncover the intended path — which emphasized the value of recon over brute force.
+
+## Blue Team Perspective
+
+Editorial demonstrates the consequences of pushing development artifacts to production and assigning unnecessary `sudo` rights to service accounts.  
+Defensive measures that would have prevented this include:
+
+- Never deploying `.git` or config files to production servers  
+- Using secrets management instead of hardcoded passwords  
+- Restricting `sudo` permissions to minimal, auditable commands only

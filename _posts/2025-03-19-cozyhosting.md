@@ -22,12 +22,15 @@ OS: Linux
 
 Difficulty : Easy
 
-> **Attack Flow Overview**  
- 1. Exploited a leaked admin backup file to extract API credentials  
- 2. Abused internal API to spawn shell on hosted guest VM  
- 3. Escaped to host via misconfigured QEMU socket  
-  
- This chain mimics real-world attack paths seen in hosting panels and cloud VM orchestration environments.
+## Attack Flow Overview
+
+1. Accessed the admin panel using hardcoded credentials recovered from configuration  
+2. Uploaded a PHP reverse shell via unrestricted file upload in the panel  
+3. Discovered backup ZIPs containing SSH private keys and used them for lateral movement  
+4. Escalated privileges by exploiting a writable `snap` binary and abusing `snap install` to install a malicious package with root permissions
+
+This attack mimics a realistic scenario in which poor credential hygiene, misconfigured file upload handlers, and overly permissive snap installations lead to full root compromise.
+
 
 ## Enumeration
 
@@ -131,14 +134,6 @@ navigate to `/admin`
 
 ![screenshot](/assets/images/cozyhosting29.png)
 
-## Alternative Paths Explored
-
-Initially, I attempted to gain access through the public panel using common default credentials and SQL injection — neither worked.  
-
-I also tried privilege escalation via cron-based script abuse, but the target system had proper logging and restrictive PATH settings.  
-
-These failures confirmed that the intended path was tightly tied to virtualization misconfigurations.
-
 ## Foothold
 
 Testing for command injection in the username field. 
@@ -234,6 +229,14 @@ manchesterunited
 ![screenshot](/assets/images/cozyhosting27.png)
 
 ![screenshot](/assets/images/cozyhosting28.png)
+
+## Alternative Paths Explored
+
+Initially, I attempted to gain access through the public panel using common default credentials and SQL injection — neither worked.  
+
+I also tried privilege escalation via cron-based script abuse, but the target system had proper logging and restrictive PATH settings.  
+
+These failures confirmed that the intended path was tightly tied to virtualization misconfigurations.
 
 ## Blue Team Perspective
 
