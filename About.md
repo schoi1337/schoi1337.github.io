@@ -12,7 +12,7 @@ You’ll find writeups for Hack The Box machines, my open-source projects, and e
 My main focus right now is growing as a cyber security specialist, sharpening my practical skills, and building a career with real-world expertise.
 
 Things I believe in:
-- Clariry > Complexity
+- Clarity > Complexity
 - Consistency > Intensity
 - Progress > Perfection
 - Reproducibility > Shortcuts
