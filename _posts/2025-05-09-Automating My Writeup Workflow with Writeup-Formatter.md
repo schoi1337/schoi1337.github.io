@@ -31,15 +31,10 @@ The script handles structure, images, and SEO formatting to reduce repetition an
   - Renames, resizes, and compresses screenshots
   - Moves them to `/assets/images/`
   - Rewrites image links inside Markdown
-- Enforces consistent section headings:
-  - `Attack Flow Overview`
-  - `Why I Chose This Machine`
-  - `Alternative Paths Explored`
-  - `Blue Team Perspective`
 
 ## Folder Structure
 
-### Before:
+### Before
 
 ```yaml
 htb_writeups/
@@ -53,7 +48,7 @@ htb_writeups/
 │       └── screenshot.jpg
 ```
 
-### After Running the Script:
+### After Running the Script
 
 ```yaml
 _posts/
@@ -64,7 +59,8 @@ assets/images/
 ├── forest1.png
 ├── monteverde1.jpg
 ```
-If forest.md is missing, the script creates a minimal template automatically.
+
+If `forest.md` is missing, the script creates a minimal template automatically.
 
 ## Front Matter Example
 

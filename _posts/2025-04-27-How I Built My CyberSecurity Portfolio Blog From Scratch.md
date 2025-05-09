@@ -85,7 +85,7 @@ So I created a small automation script that:
 - Renames files to the `YYYY-MM-DD-title.md` format.
 - Automatically categorizes posts.
 
-A more detailed breakdown of this automation process will be published in a separate post.
+A more detailed breakdown of this automation process can be found [here](/projects/2025/05/09/Automating-My-Writeup-Workflow-with-Writeup-Formatter.html).
 
 ## What I Learned
 
