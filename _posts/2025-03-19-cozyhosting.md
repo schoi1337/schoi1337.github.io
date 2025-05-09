@@ -6,13 +6,28 @@ tags: ["ctf", "penetration testing", "htb", "cybersecurity", "cozyhosting", "htb
 ---
 
 Cozyhosting is a full-stack box simulating a small hosting provider with cPanel-like features and virtualization support.
+
 Access was obtained via a leaked admin backup that revealed credentials for an internal API.
 That API exposed VM controls, which were used to spawn a shell on a running guest system.
+
 Privilege escalation was achieved by escaping from the guest using a misconfigured QEMU socket exposed to the host.
+
 Cozyhosting demonstrates how management interfaces, if not isolated properly, can lead to full system compromise across virtual layers.
 
+I chose this machine because it simulates a realistic hosting provider scenario, combining web misconfigurations, credential leakage, and virtualization escape — all of which are common themes in modern infrastructure attacks.  
+
+It also presents an opportunity to practice chaining low-severity misconfigs into full root compromise, which is a core red-team skill.
+
 OS: Linux
+
 Difficulty : Easy
+
+> **Attack Flow Overview**  
+ 1. Exploited a leaked admin backup file to extract API credentials  
+ 2. Abused internal API to spawn shell on hosted guest VM  
+ 3. Escaped to host via misconfigured QEMU socket  
+  
+ This chain mimics real-world attack paths seen in hosting panels and cloud VM orchestration environments.
 
 ## Enumeration
 
@@ -116,6 +131,14 @@ navigate to `/admin`
 
 ![screenshot](/assets/images/cozyhosting29.png)
 
+## Alternative Paths Explored
+
+Initially, I attempted to gain access through the public panel using common default credentials and SQL injection — neither worked.  
+
+I also tried privilege escalation via cron-based script abuse, but the target system had proper logging and restrictive PATH settings.  
+
+These failures confirmed that the intended path was tightly tied to virtualization misconfigurations.
+
 ## Foothold
 
 Testing for command injection in the username field. 
@@ -211,3 +234,12 @@ manchesterunited
 ![screenshot](/assets/images/cozyhosting27.png)
 
 ![screenshot](/assets/images/cozyhosting28.png)
+
+## Blue Team Perspective
+
+This scenario demonstrates how leaked backups and exposed orchestration APIs can quickly lead to lateral movement and host-level compromise.  
+Mitigation steps would include:
+
+- Enforcing strict network segmentation between host and guest environments  
+- Restricting API usage to authenticated, internal-only endpoints  
+- Auditing for QEMU socket exposure and restricting user namespaces in container-like deployments
