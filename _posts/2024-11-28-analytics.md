@@ -3,6 +3,7 @@ title: "Analytics"
 date: 2024-11-28
 categories: HTB
 tags: [nosql-injection, reverse-shell, eval-injection, automation-abuse]
+description: "Full attack chain on HTB Analytics: from NoSQL login bypass to code execution via unsafe `eval()` in analytics backend."
 
 ---
 

@@ -3,6 +3,7 @@ title: "Timelapse"
 date: 2024-11-29
 categories: HTB
 tags: [windows, AD, LAPS, backup, credential-extraction]
+description: "HTB Timelapse machine guide covering SMB enumeration, certificate decryption, and credential recovery from backup image leading to SYSTEM access."
 
 ---
 

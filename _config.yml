@@ -20,6 +20,9 @@ exclude:
   - vendor
   - README.md
 
+github:
+  is_project_page: true
+  
 # Build settings
 defaults:
   - scope:

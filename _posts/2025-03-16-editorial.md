@@ -3,6 +3,7 @@ title: "Editorial"
 date: 2025-03-16
 categories: HTB
 tags: [git-leak, source-analysis, file-upload, sudo, script-injection]
+description: "HTB Editorial writeup focusing on Git repo recovery, CMS admin abuse, and privilege escalation via vulnerable backup script with sudo permissions."
 
 ---
 

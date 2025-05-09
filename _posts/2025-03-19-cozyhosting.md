@@ -3,6 +3,7 @@ title: "Cozyhosting"
 date: 2025-03-19
 categories: HTB
 tags: [web, misconfiguration, credential-reuse, snap, privilege-escalation]
+description: "Walkthrough of the HTB Cozyhosting machine highlighting credential leakage, web shell upload, and privilege escalation using Snap misconfiguration."
 
 ---
 

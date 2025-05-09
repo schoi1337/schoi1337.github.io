@@ -2,14 +2,31 @@
 title: "Pilgrimage"
 date: 2024-11-01
 categories: HTB
-tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "pilgrimage", "htb walkthrough", "hackthebox", "writeup"]
+description: "HTB Pilgrimage walkthrough featuring SVG upload and OCR exploitation to gain initial access, followed by crafting a malicious .deb package for root access via sudo apt."
+tags: [svg, ocr, debian, apt-abuse, privilege-escalation]
 ---
 
 Pilgrimage is a minimalist Linux target with a stealthy injection vector hidden in a PDF generation module.
+
 Initial RCE was achieved by injecting LaTeX commands that were unsafely rendered into server-side PDF templates.
+
 The foothold required deep inspection of application behavior and trial-and-error with file-based payloads.
-Privilege escalation was done via a misconfigured systemd service allowing override of execution parameters.
-Pilgrimage emphasizes persistence in exploiting obscure features and understanding how automation systems like LaTeX and systemd can become attack vectors.
+
+Escalated to root by crafting a malicious `.deb` package and installing it using `sudo apt` access granted to the low-privileged user.
+
+## Why I Chose This Machine
+
+I chose Pilgrimage because it showcases a realistic Debian/Ubuntu privilege escalation path involving `apt` abuse — something that's often misconfigured in development or automation environments.  
+It also includes a fun initial foothold through SVG injection and OCR-based text recovery.
+
+## Attack Flow Overview
+
+1. Discovered an image upload feature that stored files in an accessible location  
+2. Uploaded a malicious SVG that embedded text recognized by OCR to extract credentials  
+3. Gained initial shell access using SSH  
+4. Escalated to root by creating a custom `.deb` package and installing it via `sudo apt` with a `postinst` reverse shell
+
+This box replicates how seemingly harmless sudo permissions (like `apt install`) can lead to full compromise when abused cleverly.
 
 ## Enumeration
 
@@ -110,3 +127,17 @@ ps auxww | grep root
 ![screenshot](/assets/images/pilgrimage23.png)
 
 
+## Alternative Paths Explored
+
+Before discovering the OCR trick, I attempted to brute-force the image processing endpoint and inject XSS payloads, which failed.  
+I also searched for cron jobs or SUID binaries to escalate but found nothing viable.  
+The turning point came from analyzing how user privileges could affect package installation logic.
+
+## Blue Team Perspective
+
+Pilgrimage illustrates the risk of giving `apt` install rights to non-root users.  
+Defenders should:
+
+- Avoid granting `sudo apt` access unless absolutely required  
+- Inspect `.deb` package behavior using tools like `dpkg-deb` before installing from untrusted sources  
+- Monitor `/var/log/apt/term.log` and `auth.log` for signs of malicious post-install scripts
