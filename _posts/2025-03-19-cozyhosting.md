@@ -14,6 +14,8 @@ Privilege escalation was achieved by escaping from the guest using a misconfigur
 
 Cozyhosting demonstrates how management interfaces, if not isolated properly, can lead to full system compromise across virtual layers.
 
+## Why I Chose This Machine
+
 I chose this machine because it simulates a realistic hosting provider scenario, combining web misconfigurations, credential leakage, and virtualization escape — all of which are common themes in modern infrastructure attacks.  
 
 It also presents an opportunity to practice chaining low-severity misconfigs into full root compromise, which is a core red-team skill.

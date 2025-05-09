@@ -6,10 +6,26 @@ tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "ana
 ---
 
 Analytics simulates a data dashboard built on Node.js and MongoDB with poor session handling and misused admin logic.
+
 Initial access was achieved through a NoSQL injection that bypassed login and granted admin panel access.
+
 Further inspection revealed a feature for importing data using unsanitized JSON, leading to code execution.
-Escalation was performed by abusing a cron job that processed log files from a writable directory.
-Analytics reflects the real-world risks of misusing flexible backend stacks, especially in JavaScript-heavy data platforms.
+
+Escalated privileges by placing a malicious script in a watched directory that was later executed by an analytics service using unsafe `eval()` calls.
+
+## Why I Chose This Machine
+
+I picked Analytics because it mimics a data platform environment with insecure backend logic and weak sandboxing — scenarios that are highly relevant in modern SaaS and dashboard applications.  
+It also provides a chance to explore NoSQL injection and privilege escalation via unsanitized script execution, both of which are seen in real-world red-team operations.
+
+## Attack Flow Overview
+
+1. Bypassed authentication using NoSQL injection on the login form  
+2. Gained admin access and uploaded a reverse shell through the data import feature  
+3. Discovered a directory monitored by an internal analytics service  
+4. Escalated to root by placing a malicious script that was later executed via insecure `eval()` logic
+
+This chain reflects a real-world attack where internal automation is exploited due to trust assumptions and missing input validation.
 
 ## Enumeration
 
@@ -94,3 +110,20 @@ Using a [public exploit](https://github.com/g1vi/CVE-2023-2640-CVE-2023-32629) t
 ![screenshot](/assets/images/analytics14.png)
 
 ![screenshot](/assets/images/analytics15.png)
+
+## Alternative Paths Explored
+
+Initially tried brute-forcing logins and scanning for SSRF endpoints, but these yielded no usable vectors.
+
+Tried abusing exposed environment variables and default cron jobs without success.  
+
+Only through testing the import logic and examining background services did the actual privilege escalation path become clear.
+
+## Blue Team Perspective
+
+Analytics highlights the dangers of insecure code evaluation and lack of sandboxing in backend automation.  
+Defensive practices include:
+
+- Never using `eval()` on untrusted data, even in internal scripts  
+- Isolating background workers from sensitive resources  
+- Monitoring for unusual file creation or script injection in watched directories

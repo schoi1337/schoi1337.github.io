@@ -14,6 +14,8 @@ Post-login access to file management modules allowed reverse shell deployment.
 Privilege escalation involved abusing capabilities set on a backup binary, combined with log file poisoning.
 Editorial shows how developers’ habits — like pushing secrets or leaving deployment artifacts — can undermine even hardened apps.
 
+## Why I Chose This Machine
+
 I initially selected Editorial because of its web-based structure and focus on developer mistakes — particularly around Git exposure and backup script hygiene.  
 
 As I worked through the box, it revealed a full attack chain that mirrors common CI/CD security issues: from source leak to privileged script abuse.  

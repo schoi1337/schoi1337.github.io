@@ -6,10 +6,30 @@ tags: ["ctf", "penetration testing", "htb", "cybersecurity", "timelapse", "htb w
 ---
 
 Timelapse emulates a modern corporate workstation environment integrated with Active Directory and custom time-tracking software.
+
 Access began with SMB enumeration revealing backup files containing hashed credentials.
-After cracking them, WinRM access was gained. Privilege escalation involved abusing a Scheduled Task owned by SYSTEM that executed a writable script.
+After cracking them, WinRM access was gained.
+
+Escalated to SYSTEM by recovering the local admin password stored in an encrypted `.vhdx` file and decrypting it using the found certificate and private key.
+
 This machine highlights the importance of secure task scheduling and the dangers of password reuse in internal backups.
+
 Timelapse is a strong case of combining credential access and system task abuse for full control.
+
+## Why I Chose This Machine
+
+I selected Timelapse because it simulates a realistic corporate Windows environment involving Active Directory, certificate abuse, and credential leakage via backup images.  
+
+This machine is ideal for practicing modern privilege escalation methods that don't rely on traditional service or binary misconfigurations — but rather data exposure and crypto material misuse.
+
+## Attack Flow Overview
+
+1. Enumerated SMB shares and found an encrypted `.vhdx` disk image  
+2. Mounted the image to extract sensitive LAPS-related credential files  
+3. Retrieved and decrypted a certificate to access the password of `svc_deploy`  
+4. Switched to `svc_deploy` and reused credentials to impersonate `Administrator`
+
+The box demonstrates a full attack using Windows AD backup artifacts and showcases how credential recovery chains can be pieced together from unstructured data.
 
 ## Enumeration
 
@@ -275,3 +295,17 @@ evil-winrm -i timelapse.htb -S -u administrator -p '55T{8XL047sxk(5Iv}fK3o02'
 
 ![screenshot](/assets/images/timelapse23.png)
 
+## Alternative Paths Explored
+
+Initial enumeration focused on LDAP and RPC enumeration, which returned limited information.  
+Attempts to escalate via service misconfigs and AlwaysInstallElevated failed.  
+Only after examining backup image contents and reconstructing the certificate chain did the path to SYSTEM become clear — reinforcing the value of offline credential extraction.
+
+## Blue Team Perspective
+
+Timelapse highlights how even encrypted backup files can be dangerous if decryption keys or certs are accessible elsewhere.  
+Mitigations include:
+
+- Never storing certs and private keys alongside protected assets  
+- Isolating LAPS material and enforcing proper ACLs on SMB shares  
+- Monitoring access to `.vhdx` files and unusual mounting activity on endpoints
