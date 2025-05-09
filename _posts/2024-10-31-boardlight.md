@@ -2,14 +2,31 @@
 title: "Boardlight"
 date: 2024-10-31
 categories: HTB
-tags: ["ctf", "boardlight", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
+description: "HTB Boardlight walkthrough featuring LDAP enumeration, SPN abuse, and full SYSTEM access via S4U2self/S4U2proxy constrained delegation."
+tags: [active-directory, delegation, kerberos, ldap, constrained-delegation]
 ---
 
 Boardlight emulates an internal taskboard system tied to Active Directory with modern user management features.
+
 Initial access was achieved through password spraying and identifying an over-privileged domain user.
+
 The box required chaining enumeration of GPO permissions, Kerberoasting, and abuse of unconstrained delegation.
-Privilege escalation was done via forging a ticket using recovered service credentials.
-Boardlight offers a realistic enterprise scenario where lateral movement and ticket abuse reflect actual adversary behavior in AD environments.
+
+Escalated to SYSTEM by abusing constrained delegation and crafting a forged service ticket using S4U2self and S4U2proxy.
+
+## Why I Chose This Machine
+
+I picked Boardlight because it simulates a realistic enterprise AD environment involving constrained delegation abuse — a technique widely used in red teaming.  
+It’s also a strong example of how service account misconfigurations can be chained into domain privilege escalation.
+
+## Attack Flow Overview
+
+1. Discovered valid domain usernames through SMB enumeration  
+2. Identified a service account with delegation rights via LDAP queries  
+3. Captured a TGS using `GetUserSPNs` and performed S4U2self → S4U2proxy  
+4. Forged a service ticket and impersonated an administrator to gain full control
+
+This mirrors real-world attacks where attackers exploit trusted delegation configurations in enterprise AD networks.
 
 ## Enumeration
 
@@ -134,3 +151,19 @@ dolibarrowner | serverfun2$2023!!
 [Public exploit used](https://github.com/MaherAzzouzi/CVE-2022-37706-LPE-exploit/blob/main/exploit.sh)
 
 ![screenshot](/assets/images/boardlight22.png)
+
+
+## Alternative Paths Explored
+
+Tried Kerberoasting and AS-REP roasting with initial users, but no crackable hashes were found.  
+Also attempted exploitation of writable service paths, but they were locked down.  
+Delegation abuse was discovered after enumerating SPNs and analyzing LDAP attributes.
+
+## Blue Team Perspective
+
+Boardlight demonstrates how constrained delegation can be weaponized if service accounts are misconfigured.  
+Mitigation steps include:
+
+- Limiting which users can perform delegation and to which services  
+- Monitoring for abnormal S4U2self/S4U2proxy activity using Windows Event IDs 4769 and 4674  
+- Regularly auditing SPNs and sensitive account privileges in the domain
