@@ -2,7 +2,8 @@
 title: "Editorial"
 date: 2025-03-16
 categories: HTB
-tags: ["editorial", "ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
+tags: [git-leak, source-analysis, file-upload, sudo, script-injection]
+
 ---
 
 Editorial features a modern CMS hosting platform that suffered from exposed Git history and environment leaks.

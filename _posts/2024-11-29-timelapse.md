@@ -2,7 +2,8 @@
 title: "Timelapse"
 date: 2024-11-29
 categories: HTB
-tags: ["ctf", "penetration testing", "htb", "cybersecurity", "timelapse", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
+tags: [windows, AD, LAPS, backup, credential-extraction]
+
 ---
 
 Timelapse emulates a modern corporate workstation environment integrated with Active Directory and custom time-tracking software.

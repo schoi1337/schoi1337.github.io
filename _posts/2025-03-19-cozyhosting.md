@@ -2,7 +2,8 @@
 title: "Cozyhosting"
 date: 2025-03-19
 categories: HTB
-tags: ["ctf", "penetration testing", "htb", "cybersecurity", "cozyhosting", "htb writeup", "htb walkthrough", "hackthebox", "writeup"]
+tags: [web, misconfiguration, credential-reuse, snap, privilege-escalation]
+
 ---
 
 Cozyhosting is a full-stack box simulating a small hosting provider with cPanel-like features and virtualization support.

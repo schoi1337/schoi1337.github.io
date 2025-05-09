@@ -2,7 +2,8 @@
 title: "Analytics"
 date: 2024-11-28
 categories: HTB
-tags: ["ctf", "penetration testing", "htb", "cybersecurity", "htb writeup", "analytics", "htb walkthrough", "hackthebox", "writeup"]
+tags: [nosql-injection, reverse-shell, eval-injection, automation-abuse]
+
 ---
 
 Analytics simulates a data dashboard built on Node.js and MongoDB with poor session handling and misused admin logic.
