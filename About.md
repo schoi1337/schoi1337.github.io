@@ -12,8 +12,10 @@ You’ll find writeups for Hack The Box machines, my open-source projects, and e
 My main focus right now is growing as a cyber security specialist, sharpening my practical skills, and building a career with real-world expertise.
 
 Things I believe in:
+- Clariry > Complexity
 - Consistency > Intensity
 - Progress > Perfection
+- Reproducibility > Shortcuts
 
 If you're curious about my notes, want to discuss ideas, or just want to say hi, feel free to reach out.
 
@@ -23,4 +25,4 @@ If you're curious about my notes, want to discuss ideas, or just want to say hi,
 
 [Hack the Box](https://app.hackthebox.com/profile/74001)
 
-I'm also sharing insights and projects on [X (Twitter)](https://x.com/schoi1337)
+[X (Twitter)](https://x.com/schoi1337)
