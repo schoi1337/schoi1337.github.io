@@ -4,6 +4,7 @@ title: "How I Built My CyberSecurity Portfolio Blog From Scratch"
 date: 2025-04-27
 categories: PROJECTS
 tags: [Cybersecurity Portfolio, Jekyll Blog, GitHub Pages, HackTheBox Writeups, CVE Analysis, Proof of Concept, SEO, Technical Growth]
+description: A breakdown of how I built my cybersecurity portfolio blog using Jekyll, with a focus on structure, SEO, and technical clarity.
 ---
 
 If I don't document what I learn, it fades quickly.

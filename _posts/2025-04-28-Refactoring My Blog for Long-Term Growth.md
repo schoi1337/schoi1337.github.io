@@ -4,6 +4,7 @@ title: "Refactoring My Blog for Long-Term Growth"
 date: 2025-04-28
 categories: PROJECTS
 tags: [Portfolio, Refactoring, Web Optimization, Jekyll, GitHub Pages, Clean Code, Modularization, CSS Optimization, JavaScript, Table of Contents, Frontend, Technical Writing]
+description: Notes on restructuring my cybersecurity blog to improve scalability, readability, and alignment with my portfolio goals.
 ---
 
 When I first customized the [Dark Poole theme](https://github.com/andrewhwanpark/dark-poole) for my cybersecurity blog, I quickly realized that small cosmetic changes would not be enough.  
