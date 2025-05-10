@@ -267,3 +267,9 @@ blockquote {
   color: #07f1a3;
 }
 
+/* Fix for site-header wrapper width */
+.site-header .wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
