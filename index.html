@@ -2,6 +2,19 @@
 layout: default
 ---
 
+<!-- ⭐ Featured Section -->
+<div class="featured-posts">
+  <h2>🌟 Featured Projects</h2>
+  {% for post in site.posts %}
+    {% if post.featured == true %}
+      <!-- featured post template -->
+    {% endif %}
+  {% endfor %}
+</div>
+
+<hr>
+
+<!-- 🔁 All Posts -->
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
@@ -11,7 +24,6 @@ layout: default
         </h2>
         <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
       </header>
-      
       <div class="post-excerpt">
         {{ post.excerpt | strip_html | truncate: 160 }}
       </div>
