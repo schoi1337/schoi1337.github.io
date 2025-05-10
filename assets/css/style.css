@@ -23,6 +23,8 @@ a:hover {
   background-color: #191a1a;
   padding: 20px 0;
   color: #aaa;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 /* Wrapper (align title and nav inside content width) */
@@ -265,12 +267,5 @@ blockquote {
 }
 .featured-posts .post-title a {
   color: #07f1a3;
-}
-
-/* Force site-header width to match main content */
-header.site-header > .wrapper {
-  max-width: 960px !important;
-  margin: 0 auto !important;
-  padding: 0 20px;
 }
 
