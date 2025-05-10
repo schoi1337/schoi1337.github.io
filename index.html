@@ -2,11 +2,11 @@
 layout: default
 ---
 
-<!-- ⭐ Featured Section -->
+<!--  Featured Section -->
 <div class="featured-posts">
-  <h2>🌟 FEATURED </h2>
+  <h2>⭐ FEATURED </h2>
   {% for post in site.posts %}
-    {% if post.featured == true %}
+    {% if post.featured == "true" %}
       <!-- featured post template -->
     {% endif %}
   {% endfor %}
