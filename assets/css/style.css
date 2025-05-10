@@ -258,37 +258,12 @@ blockquote {
   border-radius: 8px;
   max-width: 960px;
 }
-
 .featured-posts h2 {
   font-size: 1.6em;
   margin-bottom: 20px;
-  color: #07f1a3; /* 민트 강조 */
+  color: #07f1a3;
 }
-
-.featured-posts .post {
-  margin-bottom: 25px;
-}
-
-.featured-posts .post-title {
-  font-size: 1.3em;
-  color: #fff;
-}
-
 .featured-posts .post-title a {
   color: #07f1a3;
-  text-decoration: none;
 }
 
-.featured-posts .post-title a:hover {
-  text-decoration: underline;
-}
-
-.featured-posts .post-meta {
-  font-size: 0.9em;
-  color: #888;
-  margin-bottom: 5px;
-}
-
-.featured-posts .post-excerpt {
-  color: #aaa;
-}

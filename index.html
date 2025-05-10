@@ -2,28 +2,18 @@
 layout: default
 ---
 
-<ul>
-{% for post in site.posts %}
-  <li>{{ post.title }} — featured: {{ post.featured }}</li>
-{% endfor %}
-</ul>
-
-
 <!--  Featured Section -->
 <div class="featured-posts">
-  <h2>⭐ FEATURED </h2>
-  {% for post in site.posts %}
-    {% if post.featured == "true" %}
-      <!-- featured post template -->
-    <article class="post">
-      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt | strip_html | truncate: 160 }}</p>
-    </article>
+    {% for post in site.posts %}
+    {% if post.featured == true or post.featured == "true" %}
+      <article class="post">
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p>{{ post.date | date: "%Y-%m-%d" }}</p>
+        <div>{{ post.excerpt | strip_html | truncate: 160 }}</div>
+      </article>
     {% endif %}
   {% endfor %}
 </div>
-
-<hr>
 
 <!-- 🔁 All Posts -->
 <div class="posts">
