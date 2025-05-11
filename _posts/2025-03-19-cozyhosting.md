@@ -7,12 +7,12 @@ description: "Walkthrough of the HTB Cozyhosting machine highlighting credential
 
 ---
 
-Cozyhosting is a full-stack box simulating a small hosting provider with cPanel-like features and virtualization support.
+This box highlights the risks of exposing debugging interfaces in production environments and demonstrates how small misconfigurations—when chained together—can lead to full system compromise. By relying on session hijacking, command injection, and a subtle sudo misconfiguration, I was able to gain root access without needing kernel-level exploits.
 
-Access was obtained via a leaked admin backup that revealed credentials for an internal API.
-That API exposed VM controls, which were used to spawn a shell on a running guest system.
+Initial access was achieved by exploiting an exposed Spring Boot Actuator endpoint at `/actuator/sessions`, which revealed an active session token for the user `kanderson`. By hijacking this session, I was able to access the admin panel without credentials.
 
-Privilege escalation was achieved by escaping from the guest using a misconfigured QEMU socket exposed to the host.
+After obtaining access as `app`, I located a `.jar` file containing PostgreSQL database credentials. This allowed me to dump a password hash for the `josh` user, which I successfully cracked and used to log in via SSH.  
+Privilege escalation was performed by abusing `sudo` permissions on `/usr/bin/ssh`, combined with a crafted `ProxyCommand` option to execute arbitrary commands as root.
 
 Cozyhosting demonstrates how management interfaces, if not isolated properly, can lead to full system compromise across virtual layers.
 
@@ -21,10 +21,6 @@ Cozyhosting demonstrates how management interfaces, if not isolated properly, ca
 I chose this machine because it simulates a realistic hosting provider scenario, combining web misconfigurations, credential leakage, and virtualization escape — all of which are common themes in modern infrastructure attacks.  
 
 It also presents an opportunity to practice chaining low-severity misconfigs into full root compromise, which is a core red-team skill.
-
-OS: Linux
-
-Difficulty : Easy
 
 ## Attack Flow Overview
 
