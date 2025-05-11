@@ -60,6 +60,7 @@ a:hover {
   text-decoration: none;
   margin-left: 20px;
   font-weight: 400;
+  font-family: "JetBrains Mono", system-ui;
 }
 
 .site-nav a:hover {
@@ -272,6 +273,8 @@ blockquote {
   margin-bottom: 1rem;
   color: #AAAAAA;
   text-align: center;
+  font-weight: normal;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .featured-posts .post-title a {
