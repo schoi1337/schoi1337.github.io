@@ -106,6 +106,9 @@ a:hover {
 .posts .post-title a {
   color: #07f1a3;
   text-decoration: none;
+  font-size: 1.2rem; /* 예시: 줄이고 싶은 사이즈 */
+  font-weight: 600;  /* 적당한 두께 */
+  line-height: 1.4;
 }
 
 .posts .post-title a:hover {
