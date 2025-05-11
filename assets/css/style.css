@@ -22,7 +22,7 @@ a:hover {
 .site-header {
   background-color: #191a1a;
   width: 100%;
-  padding: 2rem;
+  padding-top: 2rem;
 }
 
 .site-header .wrapper {
