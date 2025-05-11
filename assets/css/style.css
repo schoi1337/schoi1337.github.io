@@ -26,6 +26,16 @@ a:hover {
   justify-content: center;
 }
 
+.site-header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 960px;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
 /* Wrapper (align title and nav inside content width) */
 .wrapper {
   max-width: 960px;
