@@ -22,23 +22,18 @@ a:hover {
 .site-header {
   background-color: #191a1a;
   width: 100%;
-  display: flex;
-  justify-content: center;
+  padding: 2rem;
 }
 
 .site-header .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 960px;
-  width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
 }
 
 /* Wrapper (align title and nav inside content width) */
 .wrapper {
-  max-width: 960px;
+  max-width: 768px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
