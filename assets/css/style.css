@@ -263,11 +263,13 @@ blockquote {
   border-radius: 8px;
   max-width: 960px;
 }
+
 .featured-posts h2 {
-  font-size: 1.6em;
-  margin-bottom: 20px;
-  color: #07f1a3;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #AAAAAA;
 }
+
 .featured-posts .post-title a {
   color: #07f1a3;
 }
