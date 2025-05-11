@@ -98,10 +98,15 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
+.posts .h1,.h2,.h3,.h4,.h5,.h6 {
+  font-family: "JetBrains Mono", system-ui;
+}
+
 .posts .post-title {
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
+  font-family: "JetBrains Mono", system-ui;
 }
 
 .posts .post-title a {
