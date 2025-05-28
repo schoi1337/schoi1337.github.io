@@ -13,7 +13,7 @@ Container escape remains a critical area in offensive security, particularly as 
 
 While several public proof-of-concept (PoC) scripts and research articles exist for known escape techniques, many are designed for isolated testing and are not intended for broader operational use or integration into red-team workflows.
 
-**[Dockout](https://github.com/schoi1337/dockout)** was developed to address this gap by providing:
+[Dockout](https://github.com/schoi1337/dockout) was developed to address this gap by providing:
 
 - A modular and extensible PoC framework
 - Safe simulation capabilities to support learning and CI integration
@@ -37,43 +37,58 @@ Dockout uses a modular approach where each PoC is implemented as a standalone pl
 Each module follows a simple interface contract:
 
 ```python
-def simulate(): ...
-def exploit(): ...
+def simulate():
+    # Print dry-run steps
+
+def exploit():
+    # Launch real exploit (requires --unsafe and confirmation)
 ```
 
-The CLI automatically detects available modules and supports:
-- `--simulate` to preview exploit logic
-- `--unsafe` to enable real execution (with confirmation)
-- `--auto` for batch execution of supported modules
-- HTML and JSON report generation for traceability
+The CLI parser in core.py handles all mode routing (`--simulate`, `--auto`, `--attack`, etc).
 
 The directory structure:
 
 ```plaintext
-src/
-├── core.py             # CLI entry point
-├── attacks/            # PoC modules (e.g. cve_2019_5736.py)
-├── reporting/          # Report generation logic
-├── utils/              # Shared utilities
-└── dev_targets/        # Docker environments for testing
+dockout/
+├── attacks/                        # All exploit modules (real/simulated)
+│   ├── cap_abuse.py
+│   ├── cve_2019_5736.py
+│   ├── cve_2020_13409.py
+│   ├── cve_2020_15257.py
+│   ├── dirty_pipe_escalation.py
+│   ├── docker_socket_abuse.py
+│   ├── overlayfs.py
+│   ├── sudoedit.py
+│   └── writable_cgroup_escape.py
+│
+├── dev_targets/                   # Test Dockerfiles for safe sandboxing
+│   └── ...                        # (e.g., Dockerfile.cve_2019_5736, etc.)
+│
+├── src/                           # Core logic and CLI entry point
+│   ├── core.py                   # CLI dispatcher
+│   ├── env_check.py              # Runtime/container validations
+│   ├── plugin_loader.py          # Dynamic exploit loader
+│   └── report_generator.py       # HTML + JSON report generation
+│
+├── requirements.txt               # Python dependencies
+└── README.md
 ```
 
-## Exploit Coverage
+## ## Exploit Coverage (Updated)
 
-The following proof-of-concept modules are currently implemented within Dockout:
+The following PoC modules are implemented in Dockout:
 
-| Technique / CVE           | Filename                   | Description                                             | Execution Mode | Simulation Support |
-|---------------------------|----------------------------|---------------------------------------------------------|----------------|---------------------|
-| CVE-2019-5736             | `cve_2019_5736.py`         | runc overwrite via `/proc/self/exe`                     | 🟢 Real        | ✅ Supported         |
-| Docker Socket Abuse       | `docker_socket_abuse.py`   | Host takeover via `docker.sock`                         | 🟢 Real        | ✅ Supported         |
-| CAP_SYS_PTRACE            | `cap_abuse.py`             | Strace container PID for host-level access              | 🟢 Real        | ✅ Supported         |
-| OverlayFS (CVE-2023-0386) | `overlayfs.py`             | Read-only overwrite using OverlayFS mount bypass        | 🟡 Simulated   | ✅ Supported         |
-| CVE-2021-3156             | `sudoedit.py`              | Heap overflow via `sudoedit`                            | 🟡 Simulated   | ✅ Supported         |
-| CVE-2020-13409            | `cve_2020_13409.py`        | Mount attack through writable docker.sock               | 🟡 Simulated   | ✅ Supported         |
-| CVE-2020-15257            | `cve_2020_15257.py`        | Overwrite `/root` via privileged container write access | 🟡 Simulated   | ✅ Supported         |
-| Writable Cgroup           | `writable_cgroup.py`       | Escape via `notify_on_release` in writable cgroup       | 🟡 Simulated   | ✅ Supported         |
-| Dirty Pipe (CVE-2022-0847)| `dirty_pipe_escalation.py` | Overwrite read-only files using Dirty Pipe              | 🟡 Simulated   | ✅ Supported         |
-
+| Technique / CVE               | Module                     | Description                                              | Execution Mode | Simulation Support |
+|-------------------------------|-----------------------------|----------------------------------------------------------|----------------|---------------------|
+| CVE-2019-5736                 | `cve_2019_5736.py`          | runc overwrite via `/proc/self/exe`                      | 🟢 Real        | ✅ Supported         |
+| Docker Socket Abuse           | `docker_socket_abuse.py`    | Host takeover via mounted Docker socket                  | 🟢 Real        | ✅ Supported         |
+| CAP_SYS_PTRACE Abuse          | `cap_abuse.py`              | Strace host PID from inside container                    | 🟢 Real        | ✅ Supported         |
+| OverlayFS (CVE-2023-0386)     | `overlayfs.py`              | OverlayFS mount exploit for write access                 | 🟡 Simulated   | ✅ Supported         |
+| CVE-2021-3156 (sudoedit)      | `sudoedit.py`               | Heap overflow via sudoedit                               | 🟡 Simulated   | ✅ Supported         |
+| CVE-2020-13409                | `cve_2020_13409.py`         | docker.sock mount attack via volume injection            | 🟡 Simulated   | ✅ Supported         |
+| CVE-2020-15257                | `cve_2020_15257.py`         | Overwrite `/root` via privileged container mount         | 🟡 Simulated   | ✅ Supported         |
+| Writable Cgroup Escape        | `writable_cgroup_escape.py` | Escalation via notify_on_release trigger                 | 🟡 Simulated   | ✅ Supported         |
+| Dirty Pipe (CVE-2022-0847)    | `dirty_pipe_escalation.py`  | Overwrite read-only files using Dirty Pipe technique      | 🟡 Simulated   | ✅ Supported         |
 
 ## Report Generation
 
@@ -88,7 +103,6 @@ This enables users to review results safely, share internally, or store artifact
 
 Key decisions during development included:
 - Each module supports both simulation and real execution paths with logging.
-- Key decisions during development included:
 - Implementing interactive confirmation prompts for all real exploits
 - Separating simulation logic to support CI-based validation
 - Using modular file structure to simplify maintenance and future extensions
