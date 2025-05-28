@@ -64,7 +64,7 @@ dockout/
 ├── dev_targets/                   # Test Dockerfiles for safe sandboxing
 │   └── ...                        # (e.g., Dockerfile.cve_2019_5736, etc.)
 │
-├── src/                           # Core logic and CLI entry point
+├── src/                          # Core logic and CLI entry point
 │   ├── core.py                   # CLI dispatcher
 │   ├── env_check.py              # Runtime/container validations
 │   ├── plugin_loader.py          # Dynamic exploit loader
@@ -102,7 +102,6 @@ This enables users to review results safely, share internally, or store artifact
 ## Development Considerations
 
 Key decisions during development included:
-- Each module supports both simulation and real execution paths with logging.
 - Implementing interactive confirmation prompts for all real exploits
 - Separating simulation logic to support CI-based validation
 - Using modular file structure to simplify maintenance and future extensions
