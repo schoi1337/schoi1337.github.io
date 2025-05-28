@@ -44,7 +44,7 @@ def exploit():
     # Launch real exploit (requires --unsafe and confirmation)
 ```
 
-The CLI parser in core.py handles all mode routing (`--simulate`, `--auto`, `--attack`, etc).
+The CLI parser in `core.py` handles all mode routing (`--simulate`, `--auto`, `--attack`, etc).
 
 The directory structure:
 
