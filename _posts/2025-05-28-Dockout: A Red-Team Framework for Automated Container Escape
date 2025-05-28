@@ -4,6 +4,7 @@ date: 2025-05-28
 categories: PROJECTS
 description: "Dockout is a structured and safety-conscious framework for automating container escape techniques. This post outlines the rationale, design, and implementation of a red-team–oriented PoC system."
 tags: [Docker Security, Red Teaming, Exploit Framework, Secure PoC Automation]
+featured: true
 ---
 
 ## Introduction
