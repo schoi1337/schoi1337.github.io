@@ -103,7 +103,7 @@ This enables users to review results safely, share internally, or store artifact
 
 Key decisions during development included:
 - Implementing interactive confirmation prompts for all real exploits
-- Separating simulation logic to support CI-based validation
+- Simulation logic is separated and output is structured, enabling future CI validation or integration.
 - Using modular file structure to simplify maintenance and future extensions
 - Avoiding hardcoded assumptions about the container runtime or host OS
 
