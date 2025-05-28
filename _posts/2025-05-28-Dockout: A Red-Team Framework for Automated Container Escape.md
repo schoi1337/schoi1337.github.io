@@ -74,7 +74,7 @@ dockout/
 └── README.md
 ```
 
-## ## Exploit Coverage (Updated)
+## ## Exploit Coverage
 
 The following PoC modules are implemented in Dockout:
 
