@@ -16,7 +16,7 @@ While several public proof-of-concept (PoC) scripts and research articles exist 
 [Dockout](https://github.com/schoi1337/dockout) was developed to address this gap by providing:
 
 - A modular and extensible PoC framework
-- Safe simulation capabilities to support learning and CI integration
+- Safe simulation capabilities to support learning and experimentation — and future CI integration with structured output.
 - Structured logging and reporting for traceability and audit
 
 This post outlines the design and implementation of Dockout, including the trade-offs made to balance functionality, safety, and usability.
