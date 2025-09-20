@@ -3,7 +3,7 @@ layout: post
 title: "Structuring a Knowledge Hub for Offensive Security and Emerging AI Threats"
 date: 2025-09-05
 categories: BAU
-tags: [Offensive Security, Red Teaming, Adversarial AI, GenAI, Knowledge Sharing, Threat Landscape]
+tags: [Offensive Security,Adversarial AI, GenAI, Knowledge Sharing, Threat Landscape]
 featured: true
 ---
 
@@ -12,7 +12,7 @@ featured: true
 Offensive security is shaped by a rapidly evolving threat landscape.  
 Techniques that were effective yesterday may be outdated tomorrow, and keeping track of emerging attack vectors (from traditional Red Team workflows to adversarial AI and GenAI misuse) requires more than scattered notes.  
 
-To address this, I designed a **Security Research Knowledge Hub**. Its purpose is simple: provide a structured way to capture ongoing research and make it easily shareable with the team.
+To address this, I designed a **Offensive AI Knowledge Hub**. Its purpose is simple: provide a structured way to capture ongoing research and make it easily shareable with the team.
 
 ## Why a Structured Hub
 
