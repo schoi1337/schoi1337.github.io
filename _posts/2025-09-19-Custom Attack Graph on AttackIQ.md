@@ -1,6 +1,7 @@
 ---
 title: "Custom Attack Graph on AttackIQ – Simulating a Full Adversary Workflow"
 description: "Chaining existing scenarios into a custom attack graph to emulate a realistic adversary workflow across Execution, Defense Evasion, Privilege Escalation, Credential Access, and Exfiltration."
+categories: [BAU]
 tags: [AIQ, MITRE ATT&CK, AttackIQ, Adversary Simulation, Attack Graph]
 ---
 
