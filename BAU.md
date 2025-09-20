@@ -1,6 +1,6 @@
 ---
 layout: category
-title: Projects
+title: BAU
 category: BAU
 permalink: /categories/BAU/
 ---
