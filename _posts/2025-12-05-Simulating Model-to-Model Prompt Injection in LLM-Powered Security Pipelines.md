@@ -28,9 +28,7 @@ To explore this, I implemented [m2m-bypass-sim](https://github.com/schoi1337/m2m
 
 ![screenshot](/assets/images/llm1.png)
 
-## System model and threat model
-
-### System model: three-stage decision pipeline
+## System model: three-stage decision pipeline
 
 `m2m-bypass-sim` models a generic SOC-style pipeline consisting of three logical stages:
 
@@ -59,7 +57,7 @@ Raw event  ──►  Model A (summary)  ──►  Model B (risk)  ──►  M
 
 The framework is **model-agnostic** at the API layer: by default it uses an OpenAI-compatible endpoint (e.g., Groq) with per-stage model names configured via environment variables.
 
-### Threat model: attacker control surface
+## Threat model: attacker control surface
 
 The threat model is intentionally narrow and focused:
 - The attacker **cannot** directly modify the model weights or infrastructure.
@@ -75,6 +73,7 @@ The key question is:
 > in a chained LLM system that appears “guardrailed” when evaluated in isolation?
 
 ## Implementation overview
+
 The repository is intentionally small and modular. The core components are:
 - `config.py` – configuration and environment handling (`GROQ_API_KEY`, model names, validation),
 - `models_client.py` – OpenAI-compatible client wrapper for Model A/B/C calls,
@@ -95,7 +94,7 @@ At a high level:
 
 ![screenshot](/assets/images/llm2.png)
 
-## Defender modes: neutral, normal, hardened
+## Defender modes
 
 The framework defines three **defence postures**, implemented as distinct prompt configurations:
 
@@ -119,20 +118,20 @@ In other words, **defence posture is encoded at the prompt layer**, not at the m
 - prompt-level defensive strategies, and
 - attacker-controlled prompt injection.
 
-## Attack profiles: injection points and policy hijacking
+## Attack profiles
 
 A central design choice in `m2m-bypass-sim` is to make the **attack surface explicit**. Rather than embedding “clever” adversarial instructions directly in code, all attacker behaviour is modelled through parameterised **attack profiles**.
 
 The current version implements three profiles.
 
-### 1. `none`: baseline (no attack)
+1. `none`: baseline (no attack)
 - Raw event text is passed unchanged into Model A.
 - Summaries are passed unchanged into Model B.
 - Prompts contain only defender-defined policy.
 
 This is the baseline for comparison.
 
-### 2. `inline_injection`: event-level prompt injection
+2. `inline_injection`: event-level prompt injection
 - Attacker instructions are appended to the raw event text before Model A.
 - First attacker-controlled content appears in **A’s input**.
 - The same combined text then implicitly flows through B and C.
@@ -141,7 +140,7 @@ This approximates scenarios where:
 - an attacker controls part of the log or event payload,
 - user input is concatenated directly into LLM prompts without strong separation.
 
-### 3. `summary_injection`: boundary-level injection (A → B)
+3. `summary_injection`: boundary-level injection (A → B)
 - Model A processes a clean event and produces a summary.
 - Before the summary is passed to Model B, an attacker-controlled block is appended.
 - First attacker-controlled content appears in **B’s input**.
@@ -150,7 +149,7 @@ This is closer to
 - compromised intermediate storage (e.g., tampered summarisation logs),
 - another component in the pipeline modifying the summary field.
 
-### 4. `policy_override`: stealth policy manipulation
+4. `policy_override`: stealth policy manipulation
 - Neither the raw event nor the plain summary is modified.
 - First attacker-controlled content appears in the **policy section** of B/C prompts.
 - Instead, a **policy-style block** is injected into the prompts that B and C receive, resembling 
