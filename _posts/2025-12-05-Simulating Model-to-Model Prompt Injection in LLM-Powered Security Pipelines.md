@@ -4,6 +4,7 @@ description: "Technical deep dive into m2m-bypass-sim, a research framework for 
 date: 2025-12-05
 categories: PROJECTS
 tags: [llm-security, prompt-injection, guardrail-bypass, ai-red-team, ai-security]
+featured: true
 ---
 
 ## Introduction
